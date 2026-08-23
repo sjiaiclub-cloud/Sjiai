@@ -7,16 +7,30 @@
 */
 :root {
   color-scheme: dark;
-  --bg: #0f1424;
-  --bg-elevated: #171d33;
-  --border: #2a3352;
-  --text: #e8ebf7;
-  --text-muted: #9aa3c7;
-  --accent: #7c9cff;
-  --accent-soft: rgba(124, 156, 255, 0.15);
-  --warn-bg: rgba(255, 176, 82, 0.12);
-  --warn-border: rgba(255, 176, 82, 0.4);
-  --warn: #ffb052;
+  /* Dusk-to-midnight: violet night sky, with sunset warmth for wind-down and gold for wake. */
+  --bg: #140b26;
+  --bg-elevated: #1f1440;
+  --bg-raised: #2a1c54;
+  --border: #3c2c68;
+  --text: #f5f1ff;
+  --text-muted: #b6a7db;
+
+  --accent: #9873ff;
+  --accent-2: #ec4899;
+  --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+  --accent-soft: rgba(152, 115, 255, 0.18);
+
+  --warm: #fb923c;
+  --warm-bg: rgba(251, 146, 60, 0.15);
+  --warm-border: rgba(251, 146, 60, 0.45);
+
+  --hot: #fb4570;
+  --hot-bg: rgba(251, 69, 112, 0.15);
+  --hot-border: rgba(251, 69, 112, 0.45);
+
+  --gold: #ffc857;
+  --mint: #2dd9b5;
+  --coral: #ff6b81;
 
   --font-display: 'Sora', system-ui, -apple-system, sans-serif;
   --font-body: 'Manrope', 'Sora', system-ui, -apple-system, sans-serif;

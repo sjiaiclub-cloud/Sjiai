@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppState, updateTodayLog } from '../state/AppStateContext';
-import { usePreviewClock } from '../state/PreviewClock';
 import { useWindDownStage } from '../lib/useWindDownStage';
-import { useSchedule } from '../lib/useSchedule';
-import { formatClock } from '../lib/time';
 import { CANDIDATE_APPS, type LockStrictness } from '../types';
 
 const STAGE_COPY: Record<string, { title: string; body: string }> = {
@@ -28,12 +25,10 @@ const STRICTNESS_COPY: Record<LockStrictness, { delaySeconds: number; needsReaso
   firm: { delaySeconds: 30, needsReason: true, label: 'Firm — 30s pause + a reason' },
 };
 
-export function WindDownPage() {
+export function WindDownPage({ onOpenDemo }: { onOpenDemo: () => void }) {
   const { state, setState } = useAppState();
   const { windDown } = state;
-  const schedule = useSchedule();
   const { stage } = useWindDownStage();
-  const { offsetMinutes, setOffsetMinutes } = usePreviewClock();
 
   const isLockActive = (stage === 'winddown' || stage === 'locked') && windDown.strictness !== 'off';
 
@@ -59,7 +54,12 @@ export function WindDownPage() {
 
   return (
     <div className="card">
-      <h2>Forced wind-down</h2>
+      <div className="demo-intro">
+        <h2>Forced wind-down</h2>
+        <button type="button" className="link-btn" style={{ textDecoration: 'none' }} onClick={onOpenDemo}>
+          ✨ Try it in the demo
+        </button>
+      </div>
       <p className="muted">
         You picked which apps get "sticky" and how firm the friction is — this never locks you out for good,
         it just adds a pause so late-night scrolling is a choice, not a reflex.
@@ -68,22 +68,6 @@ export function WindDownPage() {
       <div className={`stage-banner stage-${stage}`}>
         <strong>{STAGE_COPY[stage].title}</strong>
         <p>{STAGE_COPY[stage].body}</p>
-      </div>
-
-      <div className="field">
-        <span>Preview clock (demo only — jump ahead to see each stage without waiting)</span>
-        <input
-          type="range"
-          min={-120}
-          max={23 * 60}
-          step={10}
-          value={offsetMinutes}
-          onChange={(e) => setOffsetMinutes(Number(e.target.value))}
-        />
-        <span className="muted small">
-          {offsetMinutes === 0 ? 'Real time' : `${offsetMinutes > 0 ? '+' : ''}${offsetMinutes} min from now`} · wind-down at{' '}
-          {formatClock(schedule.windDownStart)}, bedtime {formatClock(schedule.bedtime)}
-        </span>
       </div>
 
       <div className="field">

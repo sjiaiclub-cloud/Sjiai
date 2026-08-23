@@ -3,6 +3,7 @@ import { AppStateProvider, useAppState } from './state/AppStateContext';
 import { PreviewClockProvider } from './state/PreviewClock';
 import { Onboarding } from './components/Onboarding';
 import { NavTabs, type TabId } from './components/NavTabs';
+import { InteractiveDemo } from './components/InteractiveDemo';
 import { SchedulePlanner } from './components/SchedulePlanner';
 import { WindDownPage } from './components/WindDownPage';
 import { SmartAlarm } from './components/SmartAlarm';
@@ -13,7 +14,7 @@ import './App.css';
 
 function Shell() {
   const { state, setState } = useAppState();
-  const [tab, setTab] = useState<TabId>('schedule');
+  const [tab, setTab] = useState<TabId>('demo');
 
   if (!state.profile.onboarded) {
     return (
@@ -37,8 +38,9 @@ function Shell() {
       </header>
       <NavTabs active={tab} onChange={setTab} />
       <main className="app-main">
+        {tab === 'demo' && <InteractiveDemo />}
         {tab === 'schedule' && <SchedulePlanner />}
-        {tab === 'winddown' && <WindDownPage />}
+        {tab === 'winddown' && <WindDownPage onOpenDemo={() => setTab('demo')} />}
         {tab === 'alarm' && <SmartAlarm />}
         {tab === 'reminders' && <Reminders />}
         {tab === 'trends' && <Trends />}

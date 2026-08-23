@@ -14,8 +14,12 @@
 
 .app-header h1 {
   margin: 0;
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .link-btn {
@@ -39,19 +43,32 @@
 
 .nav-tabs button {
   flex: 1;
-  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 9px 10px;
   border: none;
   border-radius: 9px;
   background: transparent;
   color: var(--text-muted);
   font-size: 0.85rem;
   white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-tabs button:hover {
+  color: var(--text);
 }
 
 .nav-tabs .nav-tab-active {
-  background: var(--accent);
-  color: #0f1424;
+  background: var(--accent-gradient);
+  color: #ffffff;
   font-weight: 600;
+}
+
+.nav-tabs .nav-tab-active:hover {
+  color: #ffffff;
 }
 
 .card {
@@ -121,6 +138,12 @@
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 0.85rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--text);
 }
 
 .chip-active {
@@ -130,18 +153,20 @@
 }
 
 .primary-btn {
-  background: var(--accent);
-  color: #0f1424;
+  background: var(--accent-gradient);
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   padding: 10px 18px;
   font-weight: 600;
   margin-top: 8px;
+  box-shadow: 0 4px 16px rgba(152, 115, 255, 0.35);
 }
 
 .primary-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .onboarding {
@@ -172,8 +197,8 @@
 }
 
 .toggle-pair .toggle-active {
-  background: var(--accent);
-  color: #0f1424;
+  background: var(--accent-gradient);
+  color: #ffffff;
 }
 
 .schedule-highlight {
@@ -192,10 +217,12 @@
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 .arrow {
-  color: var(--text-muted);
+  color: var(--accent);
+  font-size: 1.2rem;
 }
 
 .option-row {
@@ -217,11 +244,12 @@
 .option-pill-active {
   border-color: var(--accent);
   color: var(--text);
+  background: var(--accent-soft);
 }
 
 .warning-box {
-  background: var(--warn-bg);
-  border: 1px solid var(--warn-border);
+  background: var(--warm-bg);
+  border: 1px solid var(--warm-border);
   border-radius: 10px;
   padding: 12px 14px;
   font-size: 0.85rem;
@@ -243,20 +271,34 @@
   border: 1px solid var(--border);
 }
 
+.stage-banner strong {
+  font-family: var(--font-display);
+}
+
 .stage-banner p {
   margin: 4px 0 0;
   color: var(--text-muted);
   font-size: 0.88rem;
 }
 
+.stage-normal {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.stage-nudge {
+  border-color: var(--gold);
+  background: rgba(255, 200, 87, 0.1);
+}
+
 .stage-winddown {
-  border-color: #ffb052;
-  background: rgba(255, 176, 82, 0.08);
+  border-color: var(--warm);
+  background: var(--warm-bg);
 }
 
 .stage-locked {
-  border-color: #ff8a5c;
-  background: rgba(255, 138, 92, 0.1);
+  border-color: var(--hot);
+  background: var(--hot-bg);
 }
 
 .app-grid {
@@ -304,7 +346,7 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(5, 8, 20, 0.7);
+  background: rgba(8, 4, 18, 0.72);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -332,7 +374,7 @@
   font-weight: 600;
   text-align: center;
   margin: 12px 0;
-  color: var(--accent);
+  color: var(--accent-2);
 }
 
 .modal select {
@@ -379,8 +421,8 @@
 }
 
 .reminder-warning {
-  border-color: var(--warn-border);
-  background: var(--warn-bg);
+  border-color: var(--warm-border);
+  background: var(--warm-bg);
 }
 
 .reminder-insight {
@@ -410,8 +452,188 @@
   font-weight: 600;
 }
 
+.stat-value-mint {
+  color: var(--mint);
+}
+
+.stat-value-coral {
+  color: var(--coral);
+}
+
 .stat-label {
   color: var(--text-muted);
   font-size: 0.75rem;
   margin-top: 4px;
+}
+
+/* ---------- Interactive demo ---------- */
+
+.demo-intro {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.demo-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.demo-phone {
+  width: 220px;
+  flex: 0 0 220px;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--bg-raised), var(--bg));
+  padding: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.demo-phone-screen {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg);
+  aspect-ratio: 9 / 17;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-phone-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 160, 70, 0.55), rgba(251, 69, 112, 0.55));
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+
+.demo-phone-clock {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.demo-app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.demo-app-icon {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+  position: relative;
+  border: none;
+  padding: 0;
+}
+
+.demo-app-icon .lock-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  padding: 1px 3px;
+  font-size: 0.65rem;
+}
+
+.demo-panel {
+  flex: 1;
+  min-width: 240px;
+}
+
+.demo-stage-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+}
+
+.demo-caption {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  min-height: 3.6em;
+}
+
+.demo-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.demo-play-btn {
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.demo-step-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+}
+
+.demo-dots {
+  display: flex;
+  gap: 6px;
+  margin-left: 4px;
+}
+
+.demo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: var(--border);
+  padding: 0;
+}
+
+.demo-dot-active {
+  background: var(--accent);
+  width: 20px;
+}
+
+.demo-tone-btn {
+  margin-top: 12px;
+  background: var(--bg);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 600;
 }

@@ -32,9 +32,9 @@ export function Trends() {
 
       <div className="stat-row">
         <Stat label="Days logged" value={`${loggedDays}/7`} />
-        <Stat label="Easy nights" value={String(easyNights)} />
-        <Stat label="Hard nights" value={String(hardNights)} />
-        <Stat label="App bypasses" value={String(totalBypasses)} />
+        <Stat label="Easy nights" value={String(easyNights)} tone="mint" />
+        <Stat label="Hard nights" value={String(hardNights)} tone={hardNights > 0 ? 'coral' : undefined} />
+        <Stat label="App bypasses" value={String(totalBypasses)} tone={totalBypasses > 0 ? 'coral' : undefined} />
       </div>
 
       {state.profile.motivations.length > 0 ? (
@@ -59,10 +59,10 @@ export function Trends() {
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, tone }: { label: string; value: string; tone?: 'mint' | 'coral' }) {
   return (
     <div className="stat-tile">
-      <div className="stat-value">{value}</div>
+      <div className={`stat-value ${tone ? `stat-value-${tone}` : ''}`}>{value}</div>
       <div className="stat-label">{label}</div>
     </div>
   );
