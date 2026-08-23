@@ -187,8 +187,11 @@
 }
 
 .big-time {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .arrow {
@@ -205,6 +208,8 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.8rem;
   color: var(--text-muted);
 }
@@ -321,8 +326,10 @@
 }
 
 .countdown {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   margin: 12px 0;
   color: var(--accent);
@@ -397,8 +404,10 @@
 }
 
 .stat-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .stat-label {
