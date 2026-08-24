@@ -1,6 +1,6 @@
 import type { AppState } from '../types';
 
-export const STORAGE_KEY = 'sjiai-sleep-state-v1';
+export const STORAGE_KEY = 'driftly-sleep-state-v2';
 
 export function defaultState(): AppState {
   return {
@@ -16,11 +16,16 @@ export function defaultState(): AppState {
       leadMinutes: 40,
       strictness: 'gentle',
       lockedApps: [],
+      ambientSound: 'none',
     },
     alarm: {
       enabled: true,
       wakeTime: '07:00',
       wakeWindowMinutes: 20,
+      tone: 'chime',
+      rampSeconds: 90,
+      snoozeMinutes: 5,
+      activeDays: 'everyday',
     },
     logs: {},
     isWeekend: false,

@@ -1,6 +1,7 @@
-export type TabId = 'demo' | 'schedule' | 'winddown' | 'alarm' | 'reminders' | 'trends';
+export type TabId = 'home' | 'demo' | 'schedule' | 'winddown' | 'alarm' | 'reminders' | 'trends';
 
 const TABS: { id: TabId; label: string; icon: string }[] = [
+  { id: 'home', label: 'Home', icon: '🏠' },
   { id: 'demo', label: 'Demo', icon: '✨' },
   { id: 'schedule', label: 'Schedule', icon: '🌙' },
   { id: 'winddown', label: 'Wind-Down', icon: '🌆' },

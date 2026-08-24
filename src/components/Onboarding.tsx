@@ -107,7 +107,7 @@ export function Onboarding() {
       </div>
 
       <button type="button" className="primary-btn" onClick={finish}>
-        Start — see it in action
+        Start
       </button>
     </div>
   );

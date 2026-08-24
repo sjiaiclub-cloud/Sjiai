@@ -1,4 +1,7 @@
+import type { AmbientId, ToneId } from './lib/sounds';
+
 export type LockStrictness = 'off' | 'gentle' | 'firm';
+export type AlarmActiveDays = 'everyday' | 'school' | 'weekend';
 
 export interface Profile {
   wakeWeekday: string; // "HH:MM"
@@ -13,12 +16,17 @@ export interface WindDownSettings {
   leadMinutes: number; // how many minutes before bedtime wind-down starts
   strictness: LockStrictness;
   lockedApps: string[]; // app ids the teen chose to make "sticky"
+  ambientSound: AmbientId | 'none'; // optional sleep sound to play while winding down
 }
 
 export interface AlarmSettings {
   enabled: boolean;
   wakeTime: string; // "HH:MM", usually mirrors profile wake time
   wakeWindowMinutes: number; // e.g. 20 = may ring up to 20 min early at a cycle boundary
+  tone: ToneId;
+  rampSeconds: number; // how long the tone takes to reach full volume
+  snoozeMinutes: number;
+  activeDays: AlarmActiveDays;
 }
 
 export interface DayLog {

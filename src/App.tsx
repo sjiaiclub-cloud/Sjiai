@@ -3,6 +3,7 @@ import { AppStateProvider, useAppState } from './state/AppStateContext';
 import { PreviewClockProvider } from './state/PreviewClock';
 import { Onboarding } from './components/Onboarding';
 import { NavTabs, type TabId } from './components/NavTabs';
+import { Dashboard } from './components/Dashboard';
 import { InteractiveDemo } from './components/InteractiveDemo';
 import { SchedulePlanner } from './components/SchedulePlanner';
 import { WindDownPage } from './components/WindDownPage';
@@ -14,7 +15,7 @@ import './App.css';
 
 function Shell() {
   const { state, setState } = useAppState();
-  const [tab, setTab] = useState<TabId>('demo');
+  const [tab, setTab] = useState<TabId>('home');
 
   if (!state.profile.onboarded) {
     return (
@@ -27,7 +28,7 @@ function Shell() {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <h1>Sjiai</h1>
+        <h1>Driftly</h1>
         <button
           type="button"
           className="link-btn"
@@ -38,6 +39,7 @@ function Shell() {
       </header>
       <NavTabs active={tab} onChange={setTab} />
       <main className="app-main">
+        {tab === 'home' && <Dashboard onNavigate={setTab} />}
         {tab === 'demo' && <InteractiveDemo />}
         {tab === 'schedule' && <SchedulePlanner />}
         {tab === 'winddown' && <WindDownPage onOpenDemo={() => setTab('demo')} />}

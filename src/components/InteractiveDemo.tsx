@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { previewChime } from '../lib/alarmTone';
+import { previewTone } from '../lib/sounds';
 
 interface DemoApp {
   id: string;
@@ -140,7 +140,7 @@ export function InteractiveDemo() {
           <p className="demo-caption">{stage.caption}</p>
 
           {stage.id === 'wake' && (
-            <button type="button" className="demo-tone-btn" onClick={previewChime}>
+            <button type="button" className="demo-tone-btn" onClick={() => previewTone('chime')}>
               🔔 Hear the wake-up tone
             </button>
           )}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppState, updateTodayLog } from '../state/AppStateContext';
 import { useWindDownStage } from '../lib/useWindDownStage';
+import { AMBIENT_SOUNDS, playAmbientSound, type AmbientId } from '../lib/sounds';
 import { CANDIDATE_APPS, type LockStrictness } from '../types';
 
 const STAGE_COPY: Record<string, { title: string; body: string }> = {
@@ -29,8 +30,39 @@ export function WindDownPage({ onOpenDemo }: { onOpenDemo: () => void }) {
   const { state, setState } = useAppState();
   const { windDown } = state;
   const { stage } = useWindDownStage();
+  const [playingAmbient, setPlayingAmbient] = useState(false);
+  const ambientStopRef = useRef<{ stop: () => void } | null>(null);
 
   const isLockActive = (stage === 'winddown' || stage === 'locked') && windDown.strictness !== 'off';
+
+  useEffect(() => {
+    return () => ambientStopRef.current?.stop();
+  }, []);
+
+  function toggleAmbientPlayback() {
+    if (playingAmbient) {
+      ambientStopRef.current?.stop();
+      ambientStopRef.current = null;
+      setPlayingAmbient(false);
+      return;
+    }
+    if (windDown.ambientSound === 'none') return;
+    ambientStopRef.current = playAmbientSound(windDown.ambientSound);
+    setPlayingAmbient(true);
+  }
+
+  function selectAmbientSound(sound: AmbientId | 'none') {
+    setState((prev) => ({ ...prev, windDown: { ...prev.windDown, ambientSound: sound } }));
+    if (playingAmbient) {
+      ambientStopRef.current?.stop();
+      if (sound === 'none') {
+        ambientStopRef.current = null;
+        setPlayingAmbient(false);
+      } else {
+        ambientStopRef.current = playAmbientSound(sound);
+      }
+    }
+  }
 
   function toggleApp(id: string) {
     setState((prev) => ({
@@ -68,6 +100,34 @@ export function WindDownPage({ onOpenDemo }: { onOpenDemo: () => void }) {
       <div className={`stage-banner stage-${stage}`}>
         <strong>{STAGE_COPY[stage].title}</strong>
         <p>{STAGE_COPY[stage].body}</p>
+      </div>
+
+      <div className="field">
+        <span>Sleep sounds (optional — helps with falling asleep, separate from the alarm tones)</span>
+        <div className="chip-row">
+          <button
+            type="button"
+            className={`chip ${windDown.ambientSound === 'none' ? 'chip-active' : ''}`}
+            onClick={() => selectAmbientSound('none')}
+          >
+            None
+          </button>
+          {AMBIENT_SOUNDS.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              className={`chip ${windDown.ambientSound === s.id ? 'chip-active' : ''}`}
+              onClick={() => selectAmbientSound(s.id)}
+            >
+              {s.label}
+            </button>
+          ))}
+          {windDown.ambientSound !== 'none' && (
+            <button type="button" className="chip" onClick={toggleAmbientPlayback}>
+              {playingAmbient ? '⏸ Stop' : '▶ Play'}
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="field">

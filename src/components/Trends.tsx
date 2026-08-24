@@ -1,27 +1,11 @@
 import { useAppState } from '../state/AppStateContext';
 import { MOTIVATION_TAGS } from '../types';
-import { todayKey } from '../lib/time';
-
-const MOTIVATION_MESSAGE: Record<string, string> = {
-  mood: 'Consistent wind-down nights tend to track with steadier moods the next day.',
-  focus: 'Easy wind-down nights are usually the ones where school the next day feels less foggy.',
-  sports: 'Recovery and reaction time both lean on the sleep you bank tonight, not just game day.',
-  skin: "Skin repair happens mostly during deep sleep — it's a slower payoff, but a real one.",
-  energy: 'Fewer bypasses during wind-down usually means less of an afternoon energy crash.',
-};
+import { MOTIVATION_MESSAGE } from '../lib/motivation';
+import { summarizeWeek } from '../lib/weekStats';
 
 export function Trends() {
   const { state } = useAppState();
-  const last7 = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    return state.logs[todayKey(d)];
-  }).filter(Boolean);
-
-  const loggedDays = last7.length;
-  const easyNights = last7.filter((l) => l?.windDownFeltHard === false).length;
-  const hardNights = last7.filter((l) => l?.windDownFeltHard === true).length;
-  const totalBypasses = last7.reduce((sum, l) => sum + (l?.bypassCount ?? 0), 0);
+  const week = summarizeWeek(state);
 
   return (
     <div className="card">
@@ -31,11 +15,38 @@ export function Trends() {
       </p>
 
       <div className="stat-row">
-        <Stat label="Days logged" value={`${loggedDays}/7`} />
-        <Stat label="Easy nights" value={String(easyNights)} tone="mint" />
-        <Stat label="Hard nights" value={String(hardNights)} tone={hardNights > 0 ? 'coral' : undefined} />
-        <Stat label="App bypasses" value={String(totalBypasses)} tone={totalBypasses > 0 ? 'coral' : undefined} />
+        <Stat label="Days logged" value={`${week.loggedDays}/7`} />
+        <Stat label="Streak" value={`${week.streak}d`} tone={week.streak >= 3 ? 'mint' : undefined} />
+        <Stat label="Easy nights" value={String(week.easyNights)} tone="mint" />
+        <Stat label="Hard nights" value={String(week.hardNights)} tone={week.hardNights > 0 ? 'coral' : undefined} />
+        <Stat label="App bypasses" value={String(week.totalBypasses)} tone={week.totalBypasses > 0 ? 'coral' : undefined} />
       </div>
+
+      <div className="week-chart">
+        {week.days.map((day) => {
+          const height = day.log
+            ? day.log.windDownFeltHard === true
+              ? 30
+              : day.log.windDownFeltHard === false
+                ? 90
+                : 55
+            : 14;
+          const color = !day.log
+            ? 'var(--border)'
+            : day.log.windDownFeltHard === true
+              ? 'var(--coral)'
+              : day.log.windDownFeltHard === false
+                ? 'var(--mint)'
+                : 'var(--accent)';
+          return (
+            <div key={day.date} className="week-chart-col">
+              <div className="week-chart-bar" style={{ height: `${height}%`, background: color }} />
+              <span className="week-chart-label">{day.label}</span>
+            </div>
+          );
+        })}
+      </div>
+      <p className="muted small">Taller and mint = easy night. Short and coral = hard night. Grey = no log.</p>
 
       {state.profile.motivations.length > 0 ? (
         <div className="field">
