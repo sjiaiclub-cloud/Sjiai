@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useAppState } from '../state/AppStateContext';
 import { defaultState, isPlausibleAppState, mergeWithDefaults } from '../lib/defaultState';
 import { buildShareSummary } from '../lib/shareSummary';
+import { saveFile } from '../lib/download';
 
 export function SettingsPage() {
   const { state, setState } = useAppState();
@@ -80,15 +81,15 @@ function DataCard() {
   const { state, setState } = useAppState();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [importError, setImportError] = useState<string | null>(null);
+  const [exportStatus, setExportStatus] = useState<string | null>(null);
 
-  function exportData() {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `driftly-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
+  async function exportData() {
+    setExportStatus(null);
+    const filename = `driftly-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    const result = await saveFile(filename, JSON.stringify(state, null, 2), 'application/json');
+    if (!result.ok && result.reason !== 'declined') {
+      setExportStatus(result.reason ?? "Couldn't save the file.");
+    }
   }
 
   function onFileChosen(e: React.ChangeEvent<HTMLInputElement>) {
@@ -135,6 +136,7 @@ function DataCard() {
         <input ref={fileInputRef} type="file" accept="application/json" hidden onChange={onFileChosen} />
       </div>
       {importError && <p className="muted small" style={{ color: 'var(--coral)' }}>{importError}</p>}
+      {exportStatus && <p className="muted small" style={{ color: 'var(--coral)' }}>{exportStatus}</p>}
       <button type="button" className="danger-link" onClick={resetAll}>
         Reset everything on this device
       </button>
