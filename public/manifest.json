@@ -1,0 +1,17 @@
+{
+  "name": "Driftly — Sleep",
+  "short_name": "Driftly",
+  "description": "A self-directed sleep coach for teens.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#140b26",
+  "theme_color": "#140b26",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

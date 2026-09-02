@@ -6,6 +6,7 @@ import { summarizeWeek } from '../lib/weekStats';
 export function Trends() {
   const { state } = useAppState();
   const week = summarizeWeek(state);
+  const lowPressure = state.preferences.lowPressureMode;
 
   return (
     <div className="card">
@@ -14,13 +15,21 @@ export function Trends() {
         A quick trend view, not a grade — sleep is a pattern to notice, not a score to chase.
       </p>
 
-      <div className="stat-row">
-        <Stat label="Days logged" value={`${week.loggedDays}/7`} />
-        <Stat label="Streak" value={`${week.streak}d`} tone={week.streak >= 3 ? 'mint' : undefined} />
-        <Stat label="Easy nights" value={String(week.easyNights)} tone="mint" />
-        <Stat label="Hard nights" value={String(week.hardNights)} tone={week.hardNights > 0 ? 'coral' : undefined} />
-        <Stat label="App bypasses" value={String(week.totalBypasses)} tone={week.totalBypasses > 0 ? 'coral' : undefined} />
-      </div>
+      {lowPressure ? (
+        <p className="muted small">
+          You've checked in {week.loggedDays} of the last 7 days
+          {week.easyNights > 0 ? `, and wind-down felt easy on ${week.easyNights} of those nights` : ''}.
+          That's really all this page needs to tell you.
+        </p>
+      ) : (
+        <div className="stat-row">
+          <Stat label="Days logged" value={`${week.loggedDays}/7`} />
+          <Stat label="Streak" value={`${week.streak}d`} tone={week.streak >= 3 ? 'mint' : undefined} />
+          <Stat label="Easy nights" value={String(week.easyNights)} tone="mint" />
+          <Stat label="Hard nights" value={String(week.hardNights)} tone={week.hardNights > 0 ? 'coral' : undefined} />
+          <Stat label="App bypasses" value={String(week.totalBypasses)} tone={week.totalBypasses > 0 ? 'coral' : undefined} />
+        </div>
+      )}
 
       <div className="week-chart">
         {week.days.map((day) => {
@@ -33,11 +42,13 @@ export function Trends() {
             : 14;
           const color = !day.log
             ? 'var(--border)'
-            : day.log.windDownFeltHard === true
-              ? 'var(--coral)'
-              : day.log.windDownFeltHard === false
-                ? 'var(--mint)'
-                : 'var(--accent)';
+            : lowPressure
+              ? 'var(--accent)'
+              : day.log.windDownFeltHard === true
+                ? 'var(--coral)'
+                : day.log.windDownFeltHard === false
+                  ? 'var(--mint)'
+                  : 'var(--accent)';
           return (
             <div key={day.date} className="week-chart-col">
               <div className="week-chart-bar" style={{ height: `${height}%`, background: color }} />
@@ -46,7 +57,11 @@ export function Trends() {
           );
         })}
       </div>
-      <p className="muted small">Taller and mint = easy night. Short and coral = hard night. Grey = no log.</p>
+      <p className="muted small">
+        {lowPressure
+          ? 'Taller = wind-down felt easier that night. Grey = no check-in.'
+          : 'Taller and mint = easy night. Short and coral = hard night. Grey = no log.'}
+      </p>
 
       {state.profile.motivations.length > 0 ? (
         <div className="field">

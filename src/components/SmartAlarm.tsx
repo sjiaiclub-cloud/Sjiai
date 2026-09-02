@@ -3,7 +3,8 @@ import { useAppState } from '../state/AppStateContext';
 import { usePreviewClock } from '../state/PreviewClock';
 import { useSchedule } from '../lib/useSchedule';
 import { estimateWakeWindow } from '../lib/wakeWindow';
-import { formatClock, nowMinutes, toMinutes } from '../lib/time';
+import { estimateSleepOnsetDrift } from '../lib/adaptive';
+import { formatClock, nowMinutes, toMinutes, fromMinutes } from '../lib/time';
 import { playAlarmTone, previewTone, TONES, type ToneId } from '../lib/sounds';
 import type { AlarmActiveDays } from '../types';
 
@@ -38,7 +39,9 @@ export function SmartAlarm() {
   const stopRef = useRef<{ stop: () => void } | null>(null);
   const firedRef = useRef<string | null>(null);
 
-  const target = estimateWakeWindow(schedule.bedtime, schedule.wakeTime, alarm.wakeWindowMinutes);
+  const drift = estimateSleepOnsetDrift(state);
+  const effectiveBedtime = fromMinutes(toMinutes(schedule.bedtime) + drift.minutes);
+  const target = estimateWakeWindow(effectiveBedtime, schedule.wakeTime, alarm.wakeWindowMinutes);
   const activeToday = matchesActiveDays(alarm.activeDays, tickNow);
 
   useEffect(() => {
@@ -99,6 +102,13 @@ export function SmartAlarm() {
         This estimate comes from your planned bedtime and simple 90-minute cycle math — not from motion or
         microphone sensing, so treat it as a nudge, not a guarantee.
       </p>
+      {drift.minutes > 0 && (
+        <p className="muted small">
+          Adjusted ~{drift.minutes} min later than planned, based on your last {drift.sampleCount} night
+          {drift.sampleCount === 1 ? '' : 's'} of "did you fall asleep on time?" check-ins on the Reminders
+          tab — the estimate learns from that instead of trusting the plan blindly.
+        </p>
+      )}
 
       <div className="field">
         <span>Wake window: ±{alarm.wakeWindowMinutes} min</span>

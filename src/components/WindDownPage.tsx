@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAppState, updateTodayLog } from '../state/AppStateContext';
 import { useWindDownStage } from '../lib/useWindDownStage';
 import { AMBIENT_SOUNDS, playAmbientSound, type AmbientId } from '../lib/sounds';
+import { previewStreakAfterBypass } from '../lib/bypassPatterns';
 import { CANDIDATE_APPS, type LockStrictness } from '../types';
 
 const STAGE_COPY: Record<string, { title: string; body: string }> = {
@@ -73,6 +74,13 @@ export function WindDownPage({ onOpenDemo }: { onOpenDemo: () => void }) {
           ? prev.windDown.lockedApps.filter((a) => a !== id)
           : [...prev.windDown.lockedApps, id],
       },
+    }));
+  }
+
+  function unlockApp(id: string) {
+    setState((prev) => ({
+      ...prev,
+      windDown: { ...prev.windDown, lockedApps: prev.windDown.lockedApps.filter((a) => a !== id) },
     }));
   }
 
@@ -157,9 +165,11 @@ export function WindDownPage({ onOpenDemo }: { onOpenDemo: () => void }) {
           {CANDIDATE_APPS.map((app) => (
             <AppTile
               key={app.id}
+              id={app.id}
               label={app.label}
               selected={windDown.lockedApps.includes(app.id)}
               onToggleSelected={() => toggleApp(app.id)}
+              onUnlock={() => unlockApp(app.id)}
               locked={isLockActive && windDown.lockedApps.includes(app.id)}
               strictness={windDown.strictness}
             />
@@ -171,15 +181,19 @@ export function WindDownPage({ onOpenDemo }: { onOpenDemo: () => void }) {
 }
 
 function AppTile({
+  id,
   label,
   selected,
   onToggleSelected,
+  onUnlock,
   locked,
   strictness,
 }: {
+  id: string;
   label: string;
   selected: boolean;
   onToggleSelected: () => void;
+  onUnlock: () => void;
   locked: boolean;
   strictness: LockStrictness;
 }) {
@@ -195,24 +209,31 @@ function AppTile({
         <input type="checkbox" checked={selected} onChange={onToggleSelected} />
         <span>track this app</span>
       </label>
-      {modalOpen && <FrictionModal label={label} strictness={strictness} onClose={() => setModalOpen(false)} />}
+      {modalOpen && (
+        <FrictionModal appId={id} label={label} strictness={strictness} onUnlock={onUnlock} onClose={() => setModalOpen(false)} />
+      )}
     </div>
   );
 }
 
 function FrictionModal({
+  appId,
   label,
   strictness,
+  onUnlock,
   onClose,
 }: {
+  appId: string;
   label: string;
   strictness: LockStrictness;
+  onUnlock: () => void;
   onClose: () => void;
 }) {
-  const { setState, today } = useAppState();
+  const { state, setState, today } = useAppState();
   const config = STRICTNESS_COPY[strictness];
   const [remaining, setRemaining] = useState(config.delaySeconds);
   const [reason, setReason] = useState('');
+  const [streakPrompt, setStreakPrompt] = useState<number | null>(null);
   const startedRef = useRef(Date.now());
 
   useEffect(() => {
@@ -224,11 +245,50 @@ function FrictionModal({
   }, [config.delaySeconds]);
 
   function proceed() {
-    updateTodayLog(setState, { bypassCount: today.bypassCount + 1 });
-    onClose();
+    const streak = previewStreakAfterBypass(state, today, appId);
+    const alreadyBypassedTonight = today.bypassedApps.includes(appId);
+    updateTodayLog(setState, {
+      bypassCount: today.bypassCount + 1,
+      bypassedApps: alreadyBypassedTonight ? today.bypassedApps : [...today.bypassedApps, appId],
+    });
+    if (streak >= 3) {
+      setStreakPrompt(streak);
+    } else {
+      onClose();
+    }
   }
 
   const canProceed = remaining <= 0 && (!config.needsReason || reason.trim().length > 0);
+
+  if (streakPrompt !== null) {
+    return (
+      <div className="modal-backdrop" onClick={onClose}>
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <h3>That's {streakPrompt} nights running</h3>
+          <p className="muted">
+            You've opened {label} during wind-down {streakPrompt} nights in a row. That's not a willpower
+            problem — it probably just means this lock doesn't fit right now. Want to stop locking it, or
+            keep it as-is?
+          </p>
+          <div className="modal-actions">
+            <button type="button" onClick={onClose}>
+              Keep it locked
+            </button>
+            <button
+              type="button"
+              className="primary-btn"
+              onClick={() => {
+                onUnlock();
+                onClose();
+              }}
+            >
+              Unlock {label}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="modal-backdrop" onClick={onClose}>

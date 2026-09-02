@@ -1,4 +1,4 @@
-export type TabId = 'home' | 'demo' | 'schedule' | 'winddown' | 'alarm' | 'reminders' | 'trends';
+export type TabId = 'home' | 'demo' | 'schedule' | 'winddown' | 'alarm' | 'reminders' | 'trends' | 'settings';
 
 const TABS: { id: TabId; label: string; icon: string }[] = [
   { id: 'home', label: 'Home', icon: '🏠' },
@@ -8,6 +8,7 @@ const TABS: { id: TabId; label: string; icon: string }[] = [
   { id: 'alarm', label: 'Alarm', icon: '⏰' },
   { id: 'reminders', label: 'Reminders', icon: '💡' },
   { id: 'trends', label: 'Trends', icon: '📈' },
+  { id: 'settings', label: 'Settings', icon: '⚙️' },
 ];
 
 export function NavTabs({ active, onChange }: { active: TabId; onChange: (t: TabId) => void }) {

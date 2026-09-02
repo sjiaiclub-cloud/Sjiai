@@ -1,11 +1,14 @@
 import type { Schedule } from './sleepMath';
-import type { DayLog } from '../types';
+import type { AppState, DayLog } from '../types';
+import { CANDIDATE_APPS } from '../types';
 import { toMinutes, nowMinutes, fromMinutes } from './time';
+import { strugglingApps } from './bypassPatterns';
 
 export interface Reminder {
   id: string;
   tone: 'info' | 'warning' | 'insight';
   text: string;
+  action?: { type: 'unlock-app'; appId: string; label: string };
 }
 
 /**
@@ -14,6 +17,7 @@ export interface Reminder {
  */
 export function getReminders(
   schedule: Schedule,
+  state: AppState,
   today: DayLog,
   yesterday: DayLog | undefined,
   now: Date = new Date(),
@@ -57,11 +61,13 @@ export function getReminders(
     });
   }
 
-  if (yesterday && yesterday.bypassCount >= 3) {
+  for (const appId of strugglingApps(state, 3)) {
+    const app = CANDIDATE_APPS.find((a) => a.id === appId);
     reminders.push({
-      id: 'correlation-bypass',
+      id: `struggling-${appId}`,
       tone: 'insight',
-      text: `You opened a locked app ${yesterday.bypassCount} times during wind-down last night. If the lock list feels wrong, adjust it — it should fit you, not fight you.`,
+      text: `${app?.label ?? appId} has been bypassed several nights running. A lock that keeps getting worked around isn't doing its job — consider unlocking it.`,
+      action: { type: 'unlock-app', appId, label: app?.label ?? appId },
     });
   }
 

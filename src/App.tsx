@@ -10,6 +10,7 @@ import { WindDownPage } from './components/WindDownPage';
 import { SmartAlarm } from './components/SmartAlarm';
 import { Reminders } from './components/Reminders';
 import { Trends } from './components/Trends';
+import { SettingsPage } from './components/SettingsPage';
 import { ScreenTintOverlay } from './components/ScreenTintOverlay';
 import './App.css';
 
@@ -46,6 +47,7 @@ function Shell() {
         {tab === 'alarm' && <SmartAlarm />}
         {tab === 'reminders' && <Reminders />}
         {tab === 'trends' && <Trends />}
+        {tab === 'settings' && <SettingsPage />}
       </main>
     </div>
   );

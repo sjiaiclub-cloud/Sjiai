@@ -29,18 +29,28 @@ export interface AlarmSettings {
   activeDays: AlarmActiveDays;
 }
 
+export type SleepOnsetRating = 'ontime' | 'late' | 'very-late';
+
 export interface DayLog {
   date: string; // YYYY-MM-DD
   caffeineTime: string | null; // "HH:MM" of last caffeine, if logged
   sunlightLogged: boolean;
   windDownFeltHard: boolean | null; // teen's own rating from the night before
   bypassCount: number; // times a locked app was opened anyway during wind-down
+  bypassedApps: string[]; // which app ids were bypassed today, so patterns can be spotted
+  sleepOnsetDrift: SleepOnsetRating | null; // self-reported: did you fall asleep around when planned?
+  checkedIn: boolean; // whether today's one-tap morning check-in has been completed
+}
+
+export interface Preferences {
+  lowPressureMode: boolean; // hides streaks/numbers in favor of plain, non-judgmental language
 }
 
 export interface AppState {
   profile: Profile;
   windDown: WindDownSettings;
   alarm: AlarmSettings;
+  preferences: Preferences;
   logs: Record<string, DayLog>; // keyed by date
   isWeekend: boolean; // manual override for demo purposes (weekday vs weekend schedule)
 }

@@ -76,6 +76,38 @@ skin, energy). Addresses the "why should I care" gap — a motivation tag
 picked once shows up as the frame for the data, instead of the data floating
 with no stakes attached.
 
+**Settings** — low-pressure mode (swaps streak counts and numeric stats for
+plain language, for anyone who finds tracking itself stressful), an opt-in
+"Share my week" plain-text summary the teen generates and copies themselves
+(the one deliberate opening for a parent/coach to stay in the loop — nothing
+is ever pushed or pulled automatically), and full data export/import as JSON
+since everything lives only in this browser's `localStorage`.
+
+## Product decisions worth calling out
+
+- **The Home dashboard's "morning check-in"** consolidates the three things
+  worth logging (sunlight, last night's wind-down, whether sleep onset was on
+  time) into one lightweight prompt shown once a day, instead of scattering
+  logging across tabs — manual habit logging has notoriously low follow-through,
+  and asking once at the moment the teen naturally opens the app beats hoping
+  they remember to go find each toggle.
+- **Repeated bypasses turn into a renegotiation prompt, not a silent tally.**
+  Bypassing the same locked app 3 nights running surfaces "that's not a
+  willpower problem, this lock doesn't fit — want to unlock it?" right in the
+  friction modal, plus a follow-up card in Reminders with a one-tap unlock.
+  A lock nobody ever revisits just becomes theater.
+- **The alarm's wake-window estimate learns.** Rather than trusting the
+  planned bedtime forever, it keeps a rolling average of the last few
+  mornings' "did you fall asleep around when planned?" answers and shifts the
+  cycle-boundary math accordingly — shown in the UI as "adjusted ~N min
+  later than planned."
+- **Autonomy vs. accountability isn't all-or-nothing.** Full parent lockout
+  solves one failure mode (a sleep app that feels imposed gets uninstalled)
+  but reopens another (zero accountability structure for younger teens whose
+  parents may legitimately co-own the household's phone policy). The "Share
+  my week" export is the middle ground: consent-based, teen-initiated,
+  never a live dashboard someone else can check without the teen knowing.
+
 ## Known limitations of the web prototype
 
 - App locking is simulated on a list of representative app names — a real
@@ -88,6 +120,12 @@ with no stakes attached.
   motion/mic sensing.
 - All audio (alarm tones and sleep sounds) is synthesized in-browser with
   the Web Audio API — no sample/audio files are bundled.
+- A web app manifest and a minimal service worker (`public/manifest.json`,
+  `public/sw.js`) make the app installable ("Add to Home Screen") where the
+  hosting environment allows it — this is the honest ceiling of what a PWA
+  can do; it does not grant background execution once the OS suspends the
+  tab, and registration is wrapped defensively since some embedded/sandboxed
+  viewers block it outright.
 
 ## Running it
 

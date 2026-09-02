@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { AppState, DayLog } from '../types';
-import { loadState, saveState, defaultState } from '../lib/defaultState';
+import { loadState, saveState, defaultState, emptyDayLog } from '../lib/defaultState';
 import { todayKey } from '../lib/time';
 
 interface Ctx {
@@ -12,10 +12,6 @@ interface Ctx {
 
 const AppStateCtx = createContext<Ctx | null>(null);
 
-function emptyLog(date: string): DayLog {
-  return { date, caffeineTime: null, sunlightLogged: false, windDownFeltHard: null, bypassCount: 0 };
-}
-
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [state, setStateRaw] = useState<AppState>(() => loadState() ?? defaultState());
 
@@ -26,7 +22,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const setState = (updater: (prev: AppState) => AppState) => setStateRaw(updater);
 
   const key = todayKey();
-  const today = state.logs[key] ?? emptyLog(key);
+  const today = state.logs[key] ?? emptyDayLog(key);
   const yesterdayDate = new Date();
   yesterdayDate.setDate(yesterdayDate.getDate() - 1);
   const yesterday = state.logs[todayKey(yesterdayDate)];
@@ -45,7 +41,7 @@ export function useAppState(): Ctx {
 export function updateTodayLog(setState: Ctx['setState'], patch: Partial<DayLog>) {
   const key = todayKey();
   setState((prev) => {
-    const existing = prev.logs[key] ?? emptyLog(key);
+    const existing = prev.logs[key] ?? emptyDayLog(key);
     return { ...prev, logs: { ...prev.logs, [key]: { ...existing, ...patch } } };
   });
 }

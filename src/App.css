@@ -800,3 +800,65 @@
   font-size: 0.68rem;
   color: var(--text-muted);
 }
+
+/* ---------- Morning check-in ---------- */
+
+.checkin-card {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, var(--bg-raised), var(--bg-elevated));
+}
+
+.checkin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+}
+
+.checkin-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Reminders actions ---------- */
+
+.reminder-action {
+  display: block;
+  margin-top: 6px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ---------- Settings ---------- */
+
+.share-textarea {
+  width: 100%;
+  resize: vertical;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin: 10px 0;
+}
+
+.danger-link {
+  display: block;
+  margin-top: 14px;
+  background: none;
+  border: none;
+  color: var(--coral);
+  text-decoration: underline;
+  font-size: 0.82rem;
+  padding: 0;
+}
