@@ -1,0 +1,59 @@
+{
+  "series": "Texts From Tomorrow",
+  "part": 1,
+  "title": "Don't Go To School",
+  "music": "mystery",
+  "narrator": { "espeak": "mb-en1", "pitch": 38, "speed": 150, "gender": "male" },
+  "characters": {
+    "maya": {
+      "name": "Maya",
+      "skin": "#a86b48",
+      "eyes": "#3b2618",
+      "hair": { "style": "bun", "color": "#1f1612" },
+      "outfit": { "style": "hoodie", "color": "#d8432f", "inner": "#f6f1e6" },
+      "accessory": "headphones",
+      "accent": "#ffd23f",
+      "voice": { "espeak": "mb-us1", "pitch": 62, "speed": 165, "gender": "female" }
+    },
+    "jay": {
+      "name": "Jay",
+      "skin": "#e0b089",
+      "eyes": "#2c4a3a",
+      "hair": { "style": "curly", "color": "#2a1a12" },
+      "outfit": { "style": "jacket", "color": "#3f7a5a", "inner": "#f2efe6", "accent": "#3fd1c4" },
+      "accessory": "glasses",
+      "accent": "#3fd1c4",
+      "voice": { "espeak": "mb-us2", "pitch": 48, "speed": 170, "gender": "male" }
+    }
+  },
+  "scenes": [
+    {
+      "set": "bedroom-night",
+      "beats": [
+        { "phone": "Unknown", "text": "Don't go to school tomorrow.", "read": "maya" },
+        { "say": "maya", "line": "Okay... who is this?", "emotion": "confused" },
+        { "phone": "Unknown", "text": "It's you. From tomorrow.", "read": "maya" },
+        { "say": "maya", "line": "Nice try, Jay. Go to sleep.", "emotion": "smug" },
+        { "phone": "Unknown", "messages": [ { "from": "me", "text": "nice try jay" }, { "from": "them", "text": "Jay lost his phone. You'll see." } ], "read": "maya" },
+        { "react": "maya", "emotion": "scared", "dur": 1.3, "sfx": "sting" }
+      ]
+    },
+    {
+      "set": "school-hallway",
+      "music": "tense",
+      "beats": [
+        { "card": "Next morning", "dur": 1.4 },
+        { "say": "jay", "with": "maya", "line": "Morning! Ugh, I lost my phone somewhere.", "emotion": "happy" },
+        { "say": "maya", "with": "jay", "line": "Wait. You lost your phone?", "emotion": "scared" },
+        { "say": "jay", "with": "maya", "line": "Yeah? Why are you looking at me like that?", "emotion": "confused" },
+        { "phone": "Unknown", "text": "12:15. The lights go out. Don't be in the hallway.", "read": "maya" },
+        { "say": "maya", "line": "Jay. What time is it?", "emotion": "scared" },
+        { "say": "jay", "line": "Uh... twelve fourteen. Why?", "emotion": "confused", "look": -0.4 },
+        { "react": "maya", "with": "jay", "emotion": "scared", "listen": { "jay": "surprised" }, "fx": "blackout", "dur": 2.2 },
+        { "say": "maya", "line": "Jay?", "emotion": "scared", "dur": 1.8, "sfx": "heartbeat", "sfxAt": 0.6 }
+      ]
+    }
+  ],
+  "vote": { "question": "What should Maya do?", "a": "Run and find Jay", "b": "Text back: what happens next?" },
+  "hashtags": ["animation", "series", "mystery", "storytime", "cartoon"]
+}
