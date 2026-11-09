@@ -1,6 +1,6 @@
 ---
 name: youtube-shorts
-description: Run the "Who Did It?" YouTube Shorts channel, 30-second fictional murder mysteries viewers solve in the comments. Writes the case (3 suspects, 1 fair clue), voices it, builds the motion-graphics Short, writes the title/description/hashtags and pinned answer, makes the cover, and keeps the 7-day plan. Use for "make today's short", "next case", "make case 00X", "plan next week", or any request to create or plan a video for the channel.
+description: Run the @abeliscooking YouTube Shorts channel ("Who Did It?" series): 30-second fictional murder mysteries viewers solve in the comments. Writes the case (3 suspects, 1 fair clue), voices it, builds the motion-graphics Short, writes the title/description/hashtags and pinned answer, makes the cover, and keeps the 7-day plan. Use for "make today's short", "next case", "make case 00X", "plan next week", or any request to create or plan a video for the channel.
 ---
 
 

@@ -73,7 +73,8 @@ function grainOverlay(ctx, t) {
 function header(ctx) {
   font(ctx, 32, 800, MONO); ctx.fillStyle = P.red; ctx.fillText(`CASE ${ep.case || '001'}`, 90, 250);
   const w = ctx.measureText(`CASE ${ep.case || '001'}`).width;
-  font(ctx, 32, 500, MONO); ctx.fillStyle = 'rgba(244,236,220,0.7)'; ctx.fillText(` · ${channel.name.toUpperCase()}`, 90 + w, 250);
+  font(ctx, 32, 500, MONO); ctx.fillStyle = 'rgba(244,236,220,0.7)'; ctx.fillText(` · ${(channel.series || channel.name).toUpperCase()}`, 90 + w, 250);
+  if (channel.handle) { font(ctx, 32, 700, MONO); ctx.fillStyle = 'rgba(244,236,220,0.85)'; ctx.textAlign = 'right'; ctx.fillText(channel.handle, 990, 250); ctx.textAlign = 'left'; }
 }
 function captions(ctx, beat, t) {
   const lt = t - beat.audioAt, size = 78, lh = 90;
@@ -148,6 +149,7 @@ function cover() {
   ctx.textAlign = 'left';
   stamp(ctx, cv.stamp || 'UNSOLVED', 560, 1420, -0.12, 1, P.red, 90);
   font(ctx, 40, 800, MONO); ctx.fillStyle = P.red; ctx.fillText(`CASE ${ep.case || '001'}`, 90, 250);
+  if (channel.handle) { font(ctx, 40, 700, MONO); ctx.fillStyle = P.cream; ctx.textAlign = 'right'; ctx.fillText(channel.handle, 990, 250); ctx.textAlign = 'left'; }
   writeFileSync(path.join(OUT, `${NAME}-cover.png`), c.toBuffer('image/png'));
 }
 function uploadText() {
