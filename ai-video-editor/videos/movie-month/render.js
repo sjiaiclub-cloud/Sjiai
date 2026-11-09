@@ -24,14 +24,15 @@ const ease = {
 };
 
 // ---------- timeline ----------
-const GENRE_DUR = 3.9;
+const GENRE_DUR = 3.7;
 const GENRES = [
-  { name: 'Space Epic', file: 'space_epic.mp4', icon: planet, pro: 'Zero-gravity mornings', con: 'One toilet. 400 crew.' },
-  { name: 'Fantasy Kingdom', file: 'fantasy_kingdom.mp4', icon: castle, pro: 'You get a dragon', con: 'No wifi. No dentists.' },
-  { name: 'Heist Thriller', file: 'heist.mp4', icon: diamond, pro: 'Everyone looks this cool', con: 'You trip the alarm.' },
-  { name: 'Rainy Rom-Com', file: 'rom_com.mp4', icon: heart, pro: 'Rain is always romantic', con: 'Constant airport sprints' },
-  { name: 'Dinosaur Island', file: 'dino_island.mp4', icon: footprint, pro: 'Real dinosaurs.', con: 'Real dinosaurs.' },
+  { name: 'Harry Potter', file: 'harry_potter.mp4', icon: wand, pro: 'Your letter finally arrives', con: 'The stairs move. Daily.' },
+  { name: 'Marvel', file: 'marvel.mp4', icon: hero, pro: 'Superheroes next door', con: 'Your city gets wrecked. Again.' },
+  { name: 'Star Wars', file: 'star_wars.mp4', icon: saber, pro: 'Lightsabers are real', con: 'Sand. Everywhere.' },
+  { name: 'Titanic', file: 'titanic.mp4', icon: ship, pro: 'First-class everything', con: 'You know how it ends.' },
+  { name: 'Jurassic Park', file: 'jurassic_park.mp4', icon: footprint, pro: 'Real dinosaurs.', con: 'Real dinosaurs.' },
 ];
+const CTA_MSG = 'jurassic park. obviously.';
 const SCENES = [
   { dur: 4.5, draw: hook },
   { dur: 5.5, draw: rules },
@@ -193,6 +194,97 @@ function heart(ctx, cx, cy, t) {
   ctx.restore();
 }
 
+
+function wand(ctx, cx, cy, t) {
+  for (let i = 0; i < 5; i++) {
+    const x = cx - 300 + i * 150, y = cy - 170 + Math.sin(t * 2 + i * 1.3) * 18 + (i % 2) * 40;
+    ctx.fillStyle = C.cream; ctx.fillRect(x - 10, y, 20, 60);
+    const fl = 1 + 0.15 * Math.sin(t * 15 + i);
+    ctx.fillStyle = '#ffcf6b'; ctx.beginPath(); ctx.ellipse(x, y - 16, 9 * fl, 16 * fl, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  const a = -0.7 + Math.sin(t * 3) * 0.25, tipX = cx - 170 + Math.cos(a) * 380, tipY = cy + 190 + Math.sin(a) * 380;
+  for (let k = 0; k < 14; k++) {
+    const tt = t - k * 0.04, aa = -0.7 + Math.sin(tt * 3) * 0.25;
+    const x = cx - 170 + Math.cos(aa) * 380 + Math.sin(k * 7 + t * 9) * 14, y = cy + 190 + Math.sin(aa) * 380 + k * 5;
+    ctx.fillStyle = `rgba(255,207,107,${1 - k / 14})`; ctx.beginPath(); ctx.arc(x, y, 14 - k * 0.8, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.save(); ctx.translate(cx - 170, cy + 190); ctx.rotate(a);
+  ctx.fillStyle = '#a06b47'; ctx.beginPath(); ctx.moveTo(0, -16); ctx.lineTo(370, -6); ctx.lineTo(370, 6); ctx.lineTo(0, 16); ctx.fill();
+  ctx.fillStyle = '#5c3a26'; rr(ctx, -20, -20, 120, 40, 14); ctx.fill();
+  ctx.fillStyle = '#7a4d33'; for (let k = 0; k < 3; k++) ctx.fillRect(10 + k * 30, -20, 10, 40);
+  ctx.restore();
+  const s = 40 + 14 * Math.sin(t * 10);
+  ctx.fillStyle = C.cream; ctx.beginPath();
+  ctx.moveTo(tipX, tipY - s); ctx.quadraticCurveTo(tipX, tipY, tipX + s, tipY); ctx.quadraticCurveTo(tipX, tipY, tipX, tipY + s);
+  ctx.quadraticCurveTo(tipX, tipY, tipX - s, tipY); ctx.quadraticCurveTo(tipX, tipY, tipX, tipY - s); ctx.fill();
+}
+
+function hero(ctx, cx, cy, t) {
+  const base = cy + 220;
+  ctx.fillStyle = '#2c2c31';
+  [[-380, 60, 260], [-320, 90, 360], [-230, 70, 220], [-160, 110, 420], [-50, 80, 300], [30, 100, 380], [130, 70, 250], [200, 110, 340], [310, 90, 280]]
+    .forEach(([x, w, h]) => ctx.fillRect(cx + x, base - h * 0.6, w, h * 0.6));
+  ctx.fillStyle = 'rgba(255,207,107,0.6)';
+  for (let i = 0; i < 40; i++) { const x = cx - 360 + ((i * 53) % 700), y = base - 30 - ((i * 37) % 160); if (Math.sin(t * 3 + i * 5) > -0.3) ctx.fillRect(x, y, 10, 14); }
+  const p = 0.15 + ((t * 0.22) % 1) * 0.7, hx = cx - 420 + p * 840, hy = cy - 20 - Math.sin(p * Math.PI) * 90;
+  ctx.strokeStyle = 'rgba(243,239,231,0.35)'; ctx.lineWidth = 4;
+  for (let k = 1; k <= 3; k++) { ctx.beginPath(); ctx.moveTo(hx - 60 - k * 40, hy + k * 12 - 20); ctx.lineTo(hx - 180 - k * 40, hy + k * 12 - 20); ctx.stroke(); }
+  ctx.save(); ctx.translate(hx, hy); ctx.rotate(-0.12); ctx.scale(1.8, 1.8);
+  const flap = Math.sin(t * 14) * 12;
+  ctx.fillStyle = C.red; ctx.beginPath(); ctx.moveTo(-10, -18); ctx.quadraticCurveTo(-70, -10 + flap, -120, 10 + flap); ctx.lineTo(-90, 28); ctx.lineTo(-10, 10); ctx.fill();
+  ctx.fillStyle = C.cream; rr(ctx, -40, -14, 90, 28, 14); ctx.fill();
+  ctx.beginPath(); ctx.arc(62, -6, 18, 0, Math.PI * 2); ctx.fill();
+  rr(ctx, 40, 4, 80, 14, 7); ctx.fill(); ctx.beginPath(); ctx.arc(122, 11, 11, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+  const b = (t * 1.3) % 1;
+  ctx.strokeStyle = `rgba(232,67,47,${1 - b})`; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.arc(cx + 260, base - 160, 20 + b * 70, 0, Math.PI * 2); ctx.stroke();
+}
+
+function saber(ctx, cx, cy, t) {
+  for (let i = 0; i < 46; i++) {
+    const sx = cx - 340 + ((i * 137) % 680), sy = cy - 200 + ((i * 89) % 400);
+    ctx.fillStyle = `rgba(243,239,231,${0.25 + 0.75 * Math.abs(Math.sin(t * 2 + i))})`; ctx.fillRect(sx, sy, 3, 3);
+  }
+  const blade = (ang, color, len) => {
+    ctx.save(); ctx.translate(cx, cy + 40); ctx.rotate(ang);
+    const hum = 1 + 0.06 * Math.sin(t * 40);
+    ctx.shadowColor = color; ctx.shadowBlur = 40 * hum;
+    ctx.fillStyle = color; rr(ctx, -12 * hum, -len, 24 * hum, len, 12); ctx.fill();
+    ctx.shadowBlur = 0; ctx.fillStyle = '#ffffff'; rr(ctx, -5, -len + 6, 10, len - 10, 5); ctx.fill();
+    ctx.fillStyle = '#9a9aa0'; rr(ctx, -18, 0, 36, 110, 8); ctx.fill();
+    ctx.fillStyle = '#3a3a40'; for (let k = 0; k < 4; k++) ctx.fillRect(-18, 24 + k * 20, 36, 8);
+    ctx.restore();
+  };
+  const swing = Math.sin(t * 2.2) * 0.12, grow = ease.out(clamp(t / 0.6));
+  blade(-0.55 + swing, '#4fa8ff', 300 * grow);
+  blade(0.55 - swing, C.red, 300 * grow);
+  if (Math.sin(t * 2.2) > 0.85) {
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.beginPath(); ctx.arc(cx, cy - 120, 22, 0, Math.PI * 2); ctx.fill();
+  }
+}
+
+function ship(ctx, cx, cy, t) {
+  ctx.fillStyle = 'rgba(243,239,231,0.9)'; ctx.beginPath(); ctx.arc(cx - 250, cy - 150, 40, 0, Math.PI * 2); ctx.fill();
+  const sea = cy + 120;
+  ctx.fillStyle = '#d7ecf2'; ctx.beginPath(); ctx.moveTo(cx + 170, sea); ctx.lineTo(cx + 230, sea - 110); ctx.lineTo(cx + 270, sea - 80); ctx.lineTo(cx + 310, sea - 150); ctx.lineTo(cx + 380, sea); ctx.fill();
+  const drift = Math.sin(t * 0.8) * 20 - 30, bob = Math.sin(t * 2) * 5;
+  ctx.save(); ctx.translate(cx - 60 + drift, sea + bob);
+  [-110, -40, 30, 100].forEach((x, i) => {
+    ctx.fillStyle = C.red; ctx.fillRect(x - 18, -200, 36, 90);
+    ctx.fillStyle = C.ink; ctx.fillRect(x - 18, -200, 36, 16);
+    ctx.fillStyle = 'rgba(243,239,231,0.35)';
+    const sm = (t * 0.8 + i * 0.25) % 1; ctx.beginPath(); ctx.arc(x - sm * 60, -215 - sm * 80, 14 + sm * 22, 0, Math.PI * 2); ctx.fill();
+  });
+  ctx.fillStyle = C.cream; ctx.fillRect(-170, -120, 340, 50);
+  ctx.fillStyle = C.ink; ctx.beginPath(); ctx.moveTo(-250, -70); ctx.lineTo(250, -70); ctx.lineTo(210, 0); ctx.lineTo(-220, 0); ctx.fill();
+  ctx.fillStyle = '#ffcf6b'; for (let x = -200; x < 200; x += 28) ctx.fillRect(x, -48, 10, 10);
+  ctx.restore();
+  ctx.fillStyle = '#0f1a24'; ctx.fillRect(cx - 420, sea, 840, 200);
+  ctx.strokeStyle = 'rgba(243,239,231,0.3)'; ctx.lineWidth = 3;
+  for (let r = 0; r < 4; r++) { ctx.beginPath(); for (let x = -420; x <= 420; x += 20) ctx.lineTo(cx + x, sea + 20 + r * 30 + Math.sin(x * 0.03 + t * 3 + r) * 5); ctx.stroke(); }
+}
+
 function footprint(ctx, cx, cy, t) {
   const beat = (t % 0.9) / 0.9, thump = Math.max(0, 1 - beat * 4);
   for (let k = 0; k < 2; k++) {
@@ -276,7 +368,7 @@ function picks(ctx, t) {
   ctx.save(); ctx.translate(900, 290); ctx.scale(0.6 + 0.4 * bp, 0.6 + 0.4 * bp);
   ctx.fillStyle = C.ink; rr(ctx, -60, -70, 120, 140, 22); ctx.fill();
   font(ctx, 80, 900); ctx.fillStyle = C.cream; ctx.textAlign = 'center'; ctx.fillText(String(i + 1), 0, 22);
-  for (let k = 0; k < GENRES.length; k++) { ctx.fillStyle = k === i ? C.red : k < i ? C.cream : '#55555a'; ctx.beginPath(); ctx.arc(-32 + k * 16, 48, 5, 0, Math.PI * 2); ctx.fill(); }
+  for (let k = 0; k < GENRES.length; k++) { ctx.fillStyle = k === i ? C.red : k < i ? C.cream : '#55555a'; ctx.beginPath(); ctx.arc(-(GENRES.length - 1) * 8 + k * 16, 48, 5, 0, Math.PI * 2); ctx.fill(); }
   ctx.restore();
 
   const pin = ease.out(prog(lt, 0, 0.45));
@@ -296,7 +388,8 @@ function picks(ctx, t) {
     const shake = label === 'CON' ? Math.sin(lt * 60) * 8 * Math.max(0, 1 - (lt - d) * 4) : 0;
     ctx.save(); ctx.globalAlpha = p; ctx.translate((1 - p) * 40 + shake, 0);
     const w = tag(ctx, label, 90, y, fill);
-    font(ctx, 52, 700); ctx.fillStyle = C.ink; ctx.fillText(text, 90 + w + 22, y);
+    let fs = 52; font(ctx, fs, 700); while (ctx.measureText(text).width > 840 - w - 22 && fs > 36) font(ctx, --fs, 700);
+    ctx.fillStyle = C.ink; ctx.fillText(text, 90 + w + 22, y);
     ctx.restore();
   };
   lineIn('PRO', C.ink, g.pro, 1185, 1.0);
@@ -331,7 +424,7 @@ function cta(ctx, t) {
     const by = Math.sin(t * 6) * 10;
     ctx.fillStyle = C.red; ctx.beginPath(); ctx.moveTo(560, 1050 + by); ctx.lineTo(600, 1050 + by); ctx.lineTo(580, 1080 + by); ctx.fill();
     shadowCard(ctx, 90, 1120, 820, 130, 65, C.dark);
-    const msg = 'dinosaur island. obviously.';
+    const msg = CTA_MSG;
     const n = Math.floor(clamp((t - 2.4) / 0.06, 0, msg.length));
     font(ctx, 46, 500); ctx.fillStyle = n ? C.cream : 'rgba(243,239,231,0.45)';
     const shown = n ? msg.slice(0, n) : 'Add comment...';
@@ -430,7 +523,7 @@ function renderAudio(file) {
   });
   thud(twistS + 3.3);
   [0.45, 0.7, 0.95].forEach((x) => blip(SCENES[4].start + x, 700, 0.07));
-  for (let c = 0; c < 27; c++) blip(SCENES[4].start + 2.4 + c * 0.06, 2400 + (c % 3) * 300, 0.025);
+  for (let c = 0; c < CTA_MSG.length; c++) blip(SCENES[4].start + 2.4 + c * 0.06, 2400 + (c % 3) * 300, 0.025);
 
   // master: fade, normalize, write 16-bit WAV
   let peak = 0;
@@ -447,7 +540,7 @@ function renderAudio(file) {
 }
 
 // ---------- main ----------
-const stillsAt = process.argv.includes('--stills') ? [2.6, 8, 12.5, 16.5, 20, 24, 28, 34, 39.5] : null;
+const stillsAt = process.argv.includes('--stills') ? [2.6, 8, ...GENRES.map((_, i) => SCENES[2].start + i * GENRE_DUR + 2.8), SCENES[3].start + 4.5, SCENES[4].start + 4.5] : null;
 const canvas = createCanvas(W, H), ctx = canvas.getContext('2d');
 if (stillsAt) {
   stillsAt.forEach((t, k) => { drawFrame(ctx, t); writeFileSync(path.join(OUT, `still-${k}.png`), canvas.toBuffer('image/png')); });
