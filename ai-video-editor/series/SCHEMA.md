@@ -30,7 +30,7 @@ One JSON file per part: `series/<slug>/part-N.json`. Rendered by `node series/re
   "voice": {
     "gender": "female",                // used to pick an ElevenLabs voice automatically
     "eleven": "<voice_id>",            // optional: a specific ElevenLabs voice
-    "espeak": "mb-us1",                // offline voice: mb-us1 (F), mb-us2 (M), mb-us3 (M), mb-en1 (M, British), en-us+f3, en-us
+    "espeak": "en-us+f3",              // offline voice: en-us+f1..f5 (F), en-us+m1..m7 (M). Don't use mb-* (MBROLA): non-commercial licence
     "pitch": 62, "speed": 165          // espeak only: pitch 0–99, words per minute
   }
 }

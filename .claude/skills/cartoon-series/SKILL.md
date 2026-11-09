@@ -13,7 +13,7 @@ Run from `ai-video-editor/`:
 npm install
 npm run check
 ```
-- **Voices:** if `ELEVENLABS_API_KEY` is set and `api.elevenlabs.io` is reachable, real voices are used automatically. Otherwise the engine uses offline espeak-ng. If `espeak-ng` or the MBROLA voices are missing, install them: `apt-get install -y espeak-ng mbrola mbrola-us1 mbrola-us2 mbrola-us3 mbrola-en1`. Tell the user which voice engine was used, because espeak sounds robotic.
+- **Voices:** if `ELEVENLABS_API_KEY` is set and `api.elevenlabs.io` is reachable, real voices are used automatically. Otherwise the engine uses offline espeak-ng. If `espeak-ng` is missing, install it: `apt-get install -y espeak-ng`. Tell the user which voice engine was used, because espeak sounds robotic. Never use MBROLA (`mb-*`) voices for videos that will be posted: their licence is non-commercial only. ElevenLabs needs a paid plan for commercial (monetised) use.
 - ffmpeg and Node 18+ are required.
 
 ## 1. New series vs. next part
@@ -27,7 +27,7 @@ Format: read `ai-video-editor/series/SCHEMA.md` before writing. Story rules:
 - One clear question drives the part. Escalate every 3–4 beats with a new reveal, a sound or a shot change.
 - Mix shot types: close-ups for emotion, two-shots for conversation, phone or card beats for reveals. Use `react` beats (a silent face) after big moments.
 - **End on a cliffhanger** and then the vote. Both options must be tempting and lead to different stories. Never use "good vs. bad".
-- Keep everything original: no copyrighted characters, names, logos or song lyrics.
+- Keep everything original: no copyrighted characters, names, logos or song lyrics. Don't copy another creator's character designs or signature looks either. Before naming a new series, web-search the title to make sure it isn't an existing show, book or brand.
 - Pick `music` per scene to fit the mood (mystery, tense, comedy, warm, action).
 
 ## 3. Render and check

@@ -1,4 +1,5 @@
-// Character voices. Uses ElevenLabs when ELEVENLABS_API_KEY is set, otherwise offline espeak-ng (MBROLA voices if installed).
+// Character voices. Uses ElevenLabs when ELEVENLABS_API_KEY is set, otherwise offline espeak-ng.
+// Avoid MBROLA (mb-*) voices for anything you post: their voice databases are licensed for non-commercial use only.
 // Returns mono 44.1kHz Float32 samples plus a per-frame mouth envelope for lip-sync. Results are cached on disk.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -19,7 +20,7 @@ function hasVoice(v) {
 
 function espeak(text, voice, emotion, tmpDir) {
   const [sm, pa] = EMO_ESPEAK[emotion] || [1, 0];
-  let v = voice.espeak || 'mb-us2';
+  let v = voice.espeak || (voice.gender === 'female' ? 'en-us+f3' : 'en-us+m3');
   if (!hasVoice(v)) v = voice.gender === 'female' ? 'en-us+f3' : 'en-us';
   const wav = path.join(tmpDir, 'e.wav'), raw = path.join(tmpDir, 'e.raw');
   execFileSync('espeak-ng', ['-v', v, '-s', String(Math.round((voice.speed || 160) * sm)), '-p', String(clampN((voice.pitch ?? 50) + pa, 0, 99)), '-a', '170', '-w', wav, text]);

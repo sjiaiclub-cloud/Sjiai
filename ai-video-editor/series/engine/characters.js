@@ -133,10 +133,10 @@ function mouth(ctx, ch, emo, m) {
 function accessory(ctx, ch) {
   const a = ch.accessory, ac = ch.accent || '#ffd23f';
   if (a === 'headphones') {
-    ctx.strokeStyle = '#d9d4c9'; ctx.lineWidth = 22; ctx.lineCap = 'round';
+    ctx.strokeStyle = '#2b2b31'; ctx.lineWidth = 22; ctx.lineCap = 'round';
     ctx.beginPath(); ctx.arc(0, -20, 168, Math.PI * 1.08, Math.PI * 1.92); ctx.stroke();
     for (const s of [-1, 1]) {
-      ctx.fillStyle = s < 0 ? '#e9e4d8' : '#b9b3a7'; ctx.beginPath(); ctx.ellipse(s * 150, 10, 34, 62, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = s < 0 ? '#3a3a42' : '#24242a'; ctx.beginPath(); ctx.ellipse(s * 150, 10, 34, 62, 0, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = ac; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(s * 150 - s * 6, 10, 18, 40, 0, 0, Math.PI * 2); ctx.stroke();
     }
   } else if (a === 'glasses') {
