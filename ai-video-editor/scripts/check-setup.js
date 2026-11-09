@@ -20,8 +20,11 @@ try {
   ok('espeak-ng (offline voice fallback, robotic; avoid mb-* MBROLA voices for posted videos: non-commercial licence)'); void mb;
 } catch { console.log('! espeak-ng missing (offline voices): apt-get install -y espeak-ng'); }
 
+try { const { ensureKokoro } = await import('../series/engine/kokoro-setup.js'); ensureKokoro() ? ok('Kokoro neural voices (offline, Apache-2.0)') : console.log('! Kokoro not installed: npm install'); }
+catch (e) { console.log(`! Kokoro unavailable: ${e.message}`); }
+
 const key = process.env.ELEVENLABS_API_KEY;
-if (!key) console.log('! ELEVENLABS_API_KEY not set: using offline espeak voices (add the key for realistic voices)');
+if (!key) console.log('! ELEVENLABS_API_KEY not set: using Kokoro offline voices (add the key for ElevenLabs voices)');
 else {
   try {
     const r = await fetch('https://api.elevenlabs.io/v1/user', { headers: { 'xi-api-key': key } });

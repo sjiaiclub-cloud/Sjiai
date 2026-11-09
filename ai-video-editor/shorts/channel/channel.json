@@ -4,6 +4,8 @@
   "format": "YouTube Shorts, 1080x1920, 35-55s",
   "voice": {
     "gender": "male",
+    "kokoro": "am_michael",
+    "kokoroSpeed": 1.08,
     "espeak": "en-us+m3",
     "pitch": 35,
     "speed": 168

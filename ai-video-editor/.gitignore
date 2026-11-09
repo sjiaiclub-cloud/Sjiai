@@ -3,3 +3,4 @@ out/
 .env
 series/*/.cache/
 shorts/channel/.cache/
+models/

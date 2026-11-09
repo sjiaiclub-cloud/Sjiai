@@ -20,6 +20,8 @@
   "dependencies": {
     "@elevenlabs/elevenlabs-js": "^2.77.0",
     "@napi-rs/canvas": "^1.1.0",
-    "dotenv": "^18.0.10"
+    "dotenv": "^18.0.10",
+    "kokoro-js": "^1.2.1",
+    "kokoro-q8-shards": "^1.0.0"
   }
 }

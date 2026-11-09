@@ -13,7 +13,7 @@ Everything lives in `ai-video-editor/shorts/`:
 
 ## 0. Setup (fresh machine every session)
 From `ai-video-editor/`: `npm install && npm run check`. Install espeak-ng if missing (`apt-get install -y espeak-ng`).
-ElevenLabs voices are used automatically when `ELEVENLABS_API_KEY` is set and `api.elevenlabs.io` is reachable. Otherwise you get the robotic espeak fallback, so tell the user which one was used.
+Voices: ElevenLabs if `ELEVENLABS_API_KEY` is set and reachable, otherwise **Kokoro** (natural offline voices, installed by `npm install`; the model is assembled and checksum-verified on first use), otherwise robotic espeak. The render prints `Voice: <engine>`, so tell the user which one was used. The narrator is `voice.kokoro` in `channel.json` (options: am_michael, am_fenrir, bm_george, af_heart, bf_emma, and more).
 
 ## The 7 steps (one Short)
 1. **Research.** Pick the next ⬜ case from `plan.md`, or find a new one. Use WebSearch to check what's trending in mystery Shorts and to **fact-check every claim** you plan to say. Prefer specific, lesser-known, well-documented cases over generic lists. If a vidIQ or YouTube connector is available, use it for keywords and search volume.

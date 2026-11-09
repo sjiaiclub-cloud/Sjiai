@@ -13,7 +13,7 @@ Run from `ai-video-editor/`:
 npm install
 npm run check
 ```
-- **Voices:** if `ELEVENLABS_API_KEY` is set and `api.elevenlabs.io` is reachable, real voices are used automatically. Otherwise the engine uses offline espeak-ng. If `espeak-ng` is missing, install it: `apt-get install -y espeak-ng`. Tell the user which voice engine was used, because espeak sounds robotic. Never use MBROLA (`mb-*`) voices for videos that will be posted: their licence is non-commercial only. ElevenLabs needs a paid plan for commercial (monetised) use.
+- **Voices:** ElevenLabs if `ELEVENLABS_API_KEY` is set and reachable, otherwise Kokoro natural offline voices (set `voice.kokoro` per character, e.g. af_heart, am_michael, bf_emma, bm_george), otherwise espeak-ng. If `espeak-ng` is missing, install it: `apt-get install -y espeak-ng`. Tell the user which voice engine was used, because espeak sounds robotic. Never use MBROLA (`mb-*`) voices for videos that will be posted: their licence is non-commercial only. ElevenLabs needs a paid plan for commercial (monetised) use.
 - ffmpeg and Node 18+ are required.
 
 ## 1. New series vs. next part

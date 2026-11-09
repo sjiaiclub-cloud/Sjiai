@@ -1,4 +1,4 @@
-// Character voices. Uses ElevenLabs when ELEVENLABS_API_KEY is set, otherwise offline espeak-ng.
+// Character voices: ElevenLabs when ELEVENLABS_API_KEY is set, else Kokoro (offline neural, Apache-2.0) if installed, else espeak-ng.
 // Avoid MBROLA (mb-*) voices for anything you post: their voice databases are licensed for non-commercial use only.
 // Returns mono 44.1kHz Float32 samples plus a per-frame mouth envelope for lip-sync. Results are cached on disk.
 import { execFileSync } from 'node:child_process';
@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import 'dotenv/config';
+import { ensureKokoro, MODEL_ROOT, MODEL_ID } from './kokoro-setup.js';
 
 export const SR = 44100;
 const KEY = process.env.ELEVENLABS_API_KEY;
@@ -61,12 +62,31 @@ function eerie(s) {
   return out;
 }
 
-export function engineName() { return KEY ? 'elevenlabs' : 'espeak-ng'; }
+// ---------- Kokoro (Apache-2.0, offline neural voices) ----------
+const EMO_SPEED = { scared: 1.08, angry: 1.04, sad: 0.9, surprised: 1.06, smug: 0.96, happy: 1.03 };
+let kokoro = null, kokoroOk = null;
+function kokoroAvailable() { if (kokoroOk === null) { try { kokoroOk = ensureKokoro(); } catch (e) { console.warn(e.message); kokoroOk = false; } } return kokoroOk; }
+async function kokoroTTS(text, voice, emotion, tmpDir) {
+  if (!kokoro) {
+    const { env } = await import('@huggingface/transformers');
+    const { KokoroTTS } = await import('kokoro-js');
+    env.localModelPath = MODEL_ROOT + '/'; env.allowRemoteModels = false; env.allowLocalModels = true;
+    kokoro = await KokoroTTS.from_pretrained(MODEL_ID, { dtype: 'q8', device: 'cpu' });
+  }
+  const v = voice.kokoro || (voice.gender === 'female' ? 'af_heart' : 'am_michael');
+  const audio = await kokoro.generate(text, { voice: v, speed: (voice.kokoroSpeed || 1) * (EMO_SPEED[emotion] || 1) });
+  const f32 = path.join(tmpDir, 'k.f32'), raw = path.join(tmpDir, 'k.raw');
+  writeFileSync(f32, Buffer.from(audio.audio.buffer, audio.audio.byteOffset, audio.audio.byteLength));
+  execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'f32le', '-ar', String(audio.sampling_rate), '-ac', '1', '-i', f32, '-ar', String(SR), '-ac', '1', '-f', 's16le', raw]);
+  return readFileSync(raw);
+}
+
+export function engineName() { return KEY ? 'elevenlabs' : kokoroAvailable() ? 'kokoro' : 'espeak-ng'; }
 
 // voice: { espeak, pitch, speed, gender, eleven }  opts: { emotion, fx: 'eerie', id }
 export async function speak(text, voice, opts, cacheDir) {
   mkdirSync(cacheDir, { recursive: true });
-  const engine = KEY && voice.engine !== 'espeak' ? 'eleven' : 'espeak';
+  const engine = voice.engine === 'espeak' ? 'espeak' : KEY && voice.engine !== 'kokoro' ? 'eleven' : kokoroAvailable() ? 'kokoro' : 'espeak';
   const key = createHash('sha1').update(JSON.stringify([engine, voice, text, opts.emotion, opts.id])).digest('hex').slice(0, 16);
   const file = path.join(cacheDir, `${key}.pcm`);
   let pcm;
@@ -75,6 +95,11 @@ export async function speak(text, voice, opts, cacheDir) {
     if (engine === 'eleven') {
       try { pcm = await eleven(text, voice, opts.emotion, opts.id); }
       catch (e) { console.warn(`ElevenLabs failed (${e.message}); using espeak-ng for: "${text.slice(0, 40)}"`); }
+    }
+    if (!pcm && (engine === 'kokoro' || (engine === 'eleven' && kokoroAvailable()))) {
+      const tmp = path.join(cacheDir, `tmp-${key}`); mkdirSync(tmp, { recursive: true });
+      try { pcm = await kokoroTTS(text, voice, opts.emotion, tmp); } catch (e) { console.warn(`Kokoro failed (${e.message}); using espeak-ng`); }
+      rmSync(tmp, { recursive: true, force: true });
     }
     if (!pcm) { const tmp = path.join(cacheDir, `tmp-${key}`); mkdirSync(tmp, { recursive: true }); pcm = espeak(text, voice, opts.emotion, tmp); rmSync(tmp, { recursive: true, force: true }); }
     writeFileSync(file, pcm);
