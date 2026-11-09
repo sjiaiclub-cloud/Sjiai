@@ -1,0 +1,25 @@
+{
+  "name": "Still Unsolved",
+  "niche": "Real unsolved mysteries and strange events, told in under a minute",
+  "format": "YouTube Shorts, 1080x1920, 35-55s",
+  "voice": {
+    "gender": "male",
+    "espeak": "en-us+m3",
+    "pitch": 35,
+    "speed": 168
+  },
+  "music": "mystery",
+  "hashtags": [
+    "shorts",
+    "mystery",
+    "unsolved",
+    "unsolvedmysteries",
+    "strange"
+  ],
+  "rules": [
+    "Real, well-documented cases only. Every fact must be checked with a web search and listed in sources.",
+    "No gore, no graphic descriptions of death, and nothing involving real victims' families. Keep it suitable for a 13+ audience.",
+    "Present theories as theories. Never state a disputed claim as fact.",
+    "Hook in the first 3 seconds; end on an open question + comment prompt."
+  ]
+}

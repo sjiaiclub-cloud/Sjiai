@@ -2,3 +2,4 @@ node_modules/
 out/
 .env
 series/*/.cache/
+shorts/channel/.cache/
