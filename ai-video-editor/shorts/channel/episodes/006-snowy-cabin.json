@@ -2,28 +2,29 @@
   "case": "006",
   "title": "The Snowy Cabin",
   "music": "mystery",
-  "answer": "B, the skier. It snowed until midnight. If she'd walked back at six, the new snow would have covered her footprints. They were on top, so she walked after midnight.",
+  "difficulty": "hard",
+  "answer": "B, the skier. Snow fell until midnight. If she'd walked back at six, her prints would have been snowed over. Sharp, clear prints mean she walked after midnight.",
   "beats": [
     {
       "line": "Ms. Frost was found dead in her mountain cabin. Three friends were staying nearby. One of them is lying.",
       "visual": {
         "type": "title",
         "case": "006",
-        "title": "The\nSnowy Cabin",
+        "title": "The Snowy Cabin",
         "sub": "Frost Cabin",
-        "stamp": "WHO DID IT?"
+        "stamp": "HARD MODE"
       }
     },
     {
-      "line": "That night, it snowed until midnight.",
+      "line": "That night, heavy snow fell until midnight.",
       "visual": {
         "type": "scene",
         "setting": "cabin",
-        "label": "Frost Cabin · snow until midnight"
+        "label": "Frost Cabin · mountain night"
       }
     },
     {
-      "line": "Suspect A. The guide says he never left the lodge.",
+      "line": "The guide says he never left the lodge.",
       "visual": {
         "type": "suspect",
         "letter": "A",
@@ -33,17 +34,17 @@
       }
     },
     {
-      "line": "Suspect B. The skier says she got back at six, long before the snow stopped.",
+      "line": "The skier says she walked back to the lodge at six.",
       "visual": {
         "type": "suspect",
         "letter": "B",
         "name": "The Skier",
         "look": "ponytail",
-        "alibi": "Got back at six."
+        "alibi": "Walked back at six."
       }
     },
     {
-      "line": "Suspect C. The friend says she was asleep all night.",
+      "line": "The friend says she was asleep all night.",
       "visual": {
         "type": "suspect",
         "letter": "C",
@@ -53,16 +54,38 @@
       }
     },
     {
-      "line": "But leading from the cabin were the skier's footprints, right on top of the fresh snow.",
+      "line": "Clue one: the guide's boots, completely dry, by the lodge fire.",
       "visual": {
         "type": "clue",
         "n": 1,
-        "icon": "footprints",
-        "label": "Skier's prints: on top of fresh snow"
+        "icon": "boots",
+        "label": "Guide's boots: dry, by the fire"
       }
     },
     {
-      "line": "So, who's lying? A, B, or C?",
+      "line": "Clue two: the friend's alarm, set for seven.",
+      "visual": {
+        "type": "clue",
+        "n": 2,
+        "icon": "clock",
+        "iconOpts": {
+          "digital": true,
+          "time": "7:00"
+        },
+        "label": "Friend's alarm: set for 7:00"
+      }
+    },
+    {
+      "line": "Clue three: a trail of the skier's boot prints from the cabin. Sharp and clear.",
+      "visual": {
+        "type": "clue",
+        "n": 3,
+        "icon": "footprints",
+        "label": "Skier's prints: sharp and clear"
+      }
+    },
+    {
+      "line": "Only one alibi doesn't add up. Who's lying? A, B, or C?",
       "visual": {
         "type": "lineup",
         "title": "Who's lying?",
@@ -81,7 +104,7 @@
           }
         ]
       },
-      "pause": 1.2
+      "pause": 1.5
     },
     {
       "line": "Comment your answer. The solution is in the pinned comment.",
@@ -89,31 +112,32 @@
         "type": "cta",
         "text": "Solve it\nin the comments",
         "next": "Next: Case 007",
-        "stamp": "CASE OPEN"
+        "stamp": "HARD MODE"
       }
     }
   ],
   "cover": {
     "lines": [
       "The snow",
-      "gave her away",
+      "never lies",
       "can you see it?"
     ],
     "highlight": 1,
     "icon": "footprints",
-    "stamp": "WHO DID IT?"
+    "stamp": "HARD MODE"
   },
   "upload": {
-    "title": "The Snow Gave Them Away ❄️ Can You Spot It? #shorts",
-    "description": "Ms. Frost was found dead in her snowy cabin. The guide, the skier and the friend all have alibis, but the snow tells the truth. Can you solve it? Answer in the pinned comment.",
+    "title": "The Snow Never Lies ❄️ Can You Solve It? #shorts",
+    "description": "Ms. Frost was found dead in her snowy cabin. The guide, the skier and the friend all have alibis. Three clues, one liar. Can you solve it? Answer in the pinned comment.",
     "hashtags": [
       "mystery",
-      "brainteaser"
+      "brainteaser",
+      "hardriddle"
     ],
     "tags": [
       "murder mystery",
       "whodunit",
-      "riddle",
+      "hard riddle",
       "detective riddle",
       "who is lying",
       "brain teaser",
@@ -121,6 +145,6 @@
       "can you solve it",
       "snow footprints riddle"
     ],
-    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the skier. It snowed until midnight. If she'd walked back at six, the new snow would have covered her footprints. They were on top, so she walked after midnight."
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the skier. Snow fell until midnight. If she'd walked back at six, her prints would have been snowed over. Sharp, clear prints mean she walked after midnight."
   }
 }

@@ -2,48 +2,49 @@
   "case": "002",
   "title": "The Cold Tea",
   "music": "mystery",
-  "answer": "B, the maid. She said she brought hot tea five minutes ago, but the tea was ice cold. It had been sitting there for ages.",
+  "difficulty": "hard",
+  "answer": "B, the maid. Ms. Voss was found at 8:05. A fresh, hot tea brought at 8:00 couldn't be ice cold five minutes later. (The receipt and the phone back up the chef and the son.)",
   "beats": [
     {
-      "line": "Ms. Voss was found dead in her penthouse. Three people were with her. One of them is lying.",
+      "line": "Ms. Voss was found dead in her penthouse at 8:05. Three people were with her. One of them is lying.",
       "visual": {
         "type": "title",
         "case": "002",
         "title": "The Cold Tea",
         "sub": "Voss Penthouse",
-        "stamp": "WHO DID IT?"
+        "stamp": "HARD MODE"
       }
     },
     {
-      "line": "It happened at eight o'clock, high above the city.",
+      "line": "Her penthouse sits high above the city.",
       "visual": {
         "type": "scene",
         "setting": "city",
-        "label": "Voss Penthouse · 8:00 PM"
+        "label": "Voss Penthouse · found 8:05 PM"
       }
     },
     {
-      "line": "Suspect A. The chef says he was out shopping for an hour.",
+      "line": "The chef says he was out shopping from seven to eight.",
       "visual": {
         "type": "suspect",
         "letter": "A",
         "name": "The Chef",
         "look": "chef",
-        "alibi": "Out shopping for an hour."
+        "alibi": "Shopping, 7 to 8."
       }
     },
     {
-      "line": "Suspect B. The maid says she brought Ms. Voss a hot cup of tea five minutes ago.",
+      "line": "The maid says she brought Ms. Voss a fresh, hot tea at eight.",
       "visual": {
         "type": "suspect",
         "letter": "B",
         "name": "The Maid",
         "look": "maid",
-        "alibi": "Brought her hot tea, 5 min ago."
+        "alibi": "Brought fresh hot tea at 8."
       }
     },
     {
-      "line": "Suspect C. The son says he was asleep in his room.",
+      "line": "The son says he was asleep in his room.",
       "visual": {
         "type": "suspect",
         "letter": "C",
@@ -53,10 +54,43 @@
       }
     },
     {
-      "line": "But on her desk, the detective found her cup of tea. It was ice cold.",
+      "line": "The detective found three clues. One: a shopping receipt in the chef's coat, from 7:48.",
       "visual": {
         "type": "clue",
         "n": 1,
+        "icon": "receipt",
+        "iconOpts": {
+          "title": "City Market",
+          "lines": [
+            "1x MILK",
+            "1x BREAD",
+            "7:48 PM"
+          ]
+        },
+        "label": "Chef's receipt: 7:48 PM"
+      }
+    },
+    {
+      "line": "Two: the son's phone. Not touched since six.",
+      "visual": {
+        "type": "clue",
+        "n": 2,
+        "icon": "phone",
+        "iconOpts": {
+          "title": "Screen time",
+          "lines": [
+            "Last used",
+            "6:02 PM"
+          ]
+        },
+        "label": "Son's phone: idle since 6"
+      }
+    },
+    {
+      "line": "Three: her cup of tea, on the desk. Ice cold.",
+      "visual": {
+        "type": "clue",
+        "n": 3,
         "icon": "cup",
         "iconOpts": {
           "cold": true
@@ -65,7 +99,7 @@
       }
     },
     {
-      "line": "So, who's lying? A, B, or C?",
+      "line": "Only one alibi doesn't add up. Who's lying? A, B, or C?",
       "visual": {
         "type": "lineup",
         "title": "Who's lying?",
@@ -84,7 +118,7 @@
           }
         ]
       },
-      "pause": 1.2
+      "pause": 1.5
     },
     {
       "line": "Comment your answer. The solution is in the pinned comment.",
@@ -92,31 +126,32 @@
         "type": "cta",
         "text": "Solve it\nin the comments",
         "next": "Next: Case 003",
-        "stamp": "CASE OPEN"
+        "stamp": "HARD MODE"
       }
     }
   ],
   "cover": {
     "lines": [
-      "Hot tea?",
-      "Ice cold.",
-      "Who's lying?"
+      "Fresh tea",
+      "ice cold",
+      "only 3% get it"
     ],
     "highlight": 1,
     "icon": "cup",
-    "stamp": "WHO DID IT?"
+    "stamp": "HARD MODE"
   },
   "upload": {
-    "title": "She Said The Tea Was Hot… 🫖 Who's Lying? #shorts",
-    "description": "Ms. Voss was found dead in her penthouse. The chef, the maid and the son all have alibis, but one cup of tea gives the liar away. Can you solve it? Answer in the pinned comment.",
+    "title": "Only 3% Solve This Murder Mystery 🫖 #shorts",
+    "description": "Ms. Voss was found dead at 8:05. The chef, the maid and the son all have alibis. Three clues, one liar. Can you solve it? Answer in the pinned comment.",
     "hashtags": [
       "mystery",
-      "brainteaser"
+      "brainteaser",
+      "hardriddle"
     ],
     "tags": [
       "murder mystery",
       "whodunit",
-      "riddle",
+      "hard riddle",
       "detective riddle",
       "who is lying",
       "brain teaser",
@@ -124,6 +159,6 @@
       "can you solve it",
       "cold tea riddle"
     ],
-    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the maid. She said she brought hot tea five minutes ago, but the tea was ice cold. It had been sitting there for ages."
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the maid. Ms. Voss was found at 8:05. A fresh, hot tea brought at 8:00 couldn't be ice cold five minutes later. (The receipt and the phone back up the chef and the son.)"
   }
 }

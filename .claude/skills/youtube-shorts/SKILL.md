@@ -18,15 +18,18 @@ Voices: ElevenLabs if `ELEVENLABS_API_KEY` is set and reachable, otherwise **Kok
 
 ## Make one case (≈30–40s, 8 beats)
 1. **Pick** the next ⬜ case in `plan.md`, or invent a new one following the rules in `channel.json` (fictional, no gore, fair clue).
-2. **Write** `episodes/NNN-slug.json`, copying the structure of `001-rainy-night.json`:
-   `title` (victim found + "one of them is lying") → `scene` (setting, including any fact the clue depends on) → `suspect` ×3 (A/B/C, each with an alibi) → `clue` (the one detail that breaks one alibi) → `lineup` ("Who's lying?") → `cta` ("answer in the pinned comment").
-   Put the solution in `answer` and in `upload.pinned` (after blank lines so it isn't an instant spoiler). **Never say the answer in the video.**
-   Sanity-check that a viewer can solve it from the video alone, with only one possible answer.
+2. **Write** `episodes/NNN-slug.json`, copying the structure of `002-cold-tea.json` (**hard mode**, the default from case 002 on):
+   `title` (stamp "HARD MODE") → `scene` (states the key fact once: a time, the weather, a power cut) → `suspect` ×3 (A/B/C, each with an alibi) → `clue` ×3 (n: 1–3) → `lineup` ("Only one alibi doesn't add up") → `cta`.
+   - Exactly one clue breaks one alibi. The other two are decoys that look suspicious but fit their suspect.
+   - The breaking clue never names the liar. Viewers must connect it to something said earlier.
+   - Mix up which letter is the liar across the week.
+   Put the solution in `answer` and `upload.pinned` (after blank lines), and explain why the decoys don't count. **Never say the answer in the video.**
+   Sanity-check: solvable from the video alone, with exactly one possible answer.
 3. **Render stills:** `node shorts/render-short.js shorts/channel/episodes/NNN-slug.json --stills auto`, then tile them (`ffmpeg -i out/still-%d.png -vf "scale=270:-1,tile=8x1" -frames:v 1 out/contact.png`) and look. Fix anything clipped, then render without `--stills` and check the audio isn't silent (`ffmpeg -i out/NNN-slug.mp4 -af volumedetect -f null -`).
 4. **Outputs:** `out/NNN-slug.mp4`, `out/NNN-slug-cover.png` (from `cover`), `out/NNN-slug-upload.txt` (title, description, hashtags, tags, pinned answer).
 5. Mark it ✅ in `plan.md`. When fewer than 3 ⬜ remain, add new cases, each with a clear clue → answer.
 
-Silhouette looks for suspects: gardener, niece, butler, chef, glasses, plain. Clue icons: boots (`iconOpts: {muddy: true}` for muddy ones), clock (`iconOpts: {time: "11:15"}`), cup, key, book, question. Add new ones in `shorts/visuals.js`.
+Silhouette looks for suspects: gardener, niece, butler, chef, glasses, plain. Clue icons: `phone` / `receipt` (`iconOpts: {title, lines: [...]}`, the last line is highlighted, so use them for any log, call history, receipt or screen), `clock` (`{time}` analog, or `{digital: true, blink: true, time}`), `cup` (`{cold: true}`), `boots` (`{muddy: true}`), `candle`, `ticket` (`{time}`), `tv`, `footprints`, `sleeve`, `hook`, `key`, `book`, `question`. Settings for `scene`: manor (rain), city, cabin (snow), party, dark (blackout). Add new ones in `shorts/visuals.js`.
 
 ## Deliver
 Send the user the MP4 and cover, and paste the upload text. Remind them to:

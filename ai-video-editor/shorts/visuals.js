@@ -26,6 +26,32 @@ const typed = (str, lt, start, cps = 28) => str.slice(0, Math.max(0, Math.floor(
 // ---------- icons (centered at 0,0, ~300px) ----------
 export const ICONS = {
 
+  phone(ctx, t, o = {}) {
+    ctx.fillStyle = '#111114'; ctx.beginPath(); ctx.roundRect(-150, -250, 300, 500, 40); ctx.fill();
+    ctx.fillStyle = '#1e2433'; ctx.beginPath(); ctx.roundRect(-132, -225, 264, 450, 28); ctx.fill();
+    ctx.fillStyle = '#000'; ctx.beginPath(); ctx.roundRect(-40, -215, 80, 20, 10); ctx.fill();
+    font(ctx, 26, 800, MONO); ctx.fillStyle = 'rgba(244,236,220,0.6)'; ctx.textAlign = 'center'; ctx.fillText((o.title || 'PHONE').toUpperCase(), 0, -150);
+    (o.lines || []).forEach((l, i) => { const big = i === (o.lines.length - 1); font(ctx, big ? 40 : 30, big ? 900 : 600, big ? DISPLAY : SANS); ctx.fillStyle = big ? P.yellow : P.cream; ctx.fillText(l, 0, -70 + i * 70); });
+    ctx.textAlign = 'left';
+  },
+  receipt(ctx, t, o = {}) {
+    ctx.save(); ctx.rotate(0.04); ctx.fillStyle = '#f4f1e8'; ctx.beginPath(); ctx.moveTo(-170, -240);
+    for (let x = -170; x <= 170; x += 20) ctx.lineTo(x, x % 40 === 0 ? -240 : -228); ctx.lineTo(170, 240); for (let x = 170; x >= -170; x -= 20) ctx.lineTo(x, x % 40 === 0 ? 240 : 228); ctx.closePath(); ctx.fill();
+    font(ctx, 28, 800, MONO); ctx.fillStyle = P.ink; ctx.textAlign = 'center'; ctx.fillText((o.title || 'RECEIPT').toUpperCase(), 0, -180);
+    ctx.setLineDash([8, 6]); ctx.strokeStyle = '#999'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-140, -160); ctx.lineTo(140, -160); ctx.stroke(); ctx.setLineDash([]);
+    (o.lines || []).forEach((l, i) => { const last = i === o.lines.length - 1; font(ctx, last ? 40 : 28, last ? 900 : 600, MONO); ctx.fillStyle = last ? P.red : P.ink; ctx.fillText(l, 0, -100 + i * 60 + (last ? 30 : 0)); });
+    ctx.textAlign = 'left'; ctx.restore();
+  },
+  candle(ctx, t) {
+    ctx.fillStyle = '#7a4a2a'; ctx.beginPath(); ctx.ellipse(0, 170, 150, 30, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#efe6cf'; ctx.fillRect(-50, 20, 100, 150); ctx.fillStyle = 'rgba(239,230,207,0.9)'; ctx.beginPath(); ctx.moveTo(-50, 20); ctx.quadraticCurveTo(-60, 70, -45, 90); ctx.lineTo(-40, 20); ctx.fill();
+    ctx.strokeStyle = 'rgba(239,230,207,0.35)'; ctx.setLineDash([12, 10]); ctx.lineWidth = 4; ctx.strokeRect(-50, -140, 100, 160); ctx.setLineDash([]);
+    ctx.strokeStyle = '#222'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(0, 0); ctx.stroke();
+    const f = 1 + 0.12 * Math.sin(t * 17) * Math.sin(t * 5); ctx.fillStyle = '#ffcf6b'; ctx.beginPath(); ctx.ellipse(0, -25, 16 * f, 34 * f, Math.sin(t * 3) * 0.1, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff3c4'; ctx.beginPath(); ctx.ellipse(0, -18, 7, 15, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,207,107,0.12)'; ctx.beginPath(); ctx.arc(0, -20, 120, 0, Math.PI * 2); ctx.fill();
+  },
+
   ticket(ctx, t, o = {}) {
     ctx.save(); ctx.rotate(-0.08);
     ctx.fillStyle = '#e9dcb8'; ctx.fillRect(-220, -110, 440, 220); ctx.fillStyle = P.red; ctx.fillRect(-220, -110, 440, 50);
@@ -75,6 +101,7 @@ export const ICONS = {
     if (!o.muddy) for (let k = 0; k < 3; k++) { const a = t * 3 + k * 2.1, x = Math.cos(k * 2.3) * 140, y = -60 + Math.sin(k * 1.7) * 90, s = 16 + 10 * Math.abs(Math.sin(a)); ctx.fillStyle = P.cream; ctx.beginPath(); ctx.moveTo(x, y - s); ctx.quadraticCurveTo(x, y, x + s, y); ctx.quadraticCurveTo(x, y, x, y + s); ctx.quadraticCurveTo(x, y, x - s, y); ctx.quadraticCurveTo(x, y, x, y - s); ctx.fill(); }
   },
   clock(ctx, t, o = {}) {
+    if (o.digital) { ctx.fillStyle = '#111'; ctx.beginPath(); ctx.roundRect(-210, -110, 420, 220, 30); ctx.fill(); const on = !o.blink || Math.floor(t * 2) % 2 === 0; font(ctx, 130, 900, MONO); ctx.fillStyle = on ? '#ff3b30' : 'rgba(255,59,48,0.12)'; ctx.textAlign = 'center'; ctx.fillText(o.time || '12:00', 0, 45); ctx.textAlign = 'left'; return; }
     ctx.fillStyle = P.paper; ctx.beginPath(); ctx.arc(0, 0, 150, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = '#7a4a2a'; ctx.lineWidth = 18; ctx.stroke();
     for (let k = 0; k < 12; k++) { ctx.save(); ctx.rotate(k * Math.PI / 6); ctx.fillStyle = P.ink; ctx.fillRect(-4, -130, 8, 22); ctx.restore(); }
     const [h, m] = (o.time || '11:15').split(':').map(Number);
@@ -236,7 +263,7 @@ export const VISUALS = {
     ctx.fillStyle = P.red; ctx.fillRect(-330, -330, 660, 70); font(ctx, 36, 800, MONO); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(`EVIDENCE #${v.n || 1}`, 0, -283); ctx.textAlign = 'left';
     ctx.save(); ctx.translate(0, 40); (ICONS[v.icon] || ICONS.question)(ctx, t, v.iconOpts || {}); ctx.restore();
     ctx.restore();
-    const mp = prog(lt, 0.5, 1.2); if (mp > 0) { const a = Math.PI * 0.9 + mp * Math.PI * 1.3, mx = 540 + Math.cos(a) * 230, my = 760 + Math.sin(a) * 200; ctx.strokeStyle = '#c9a45c'; ctx.lineWidth = 16; ctx.beginPath(); ctx.arc(mx, my, 95, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fill(); ctx.lineWidth = 26; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(mx + 68, my + 68); ctx.lineTo(mx + 160, my + 160); ctx.stroke(); }
+    const mp = prog(lt, 0.4, 1.1), mfade = 1 - prog(lt, 1.5, 0.35); if (mp > 0 && mfade > 0) { ctx.save(); ctx.globalAlpha = mfade; const a = Math.PI * 0.9 + mp * Math.PI * 1.3, mx = 540 + Math.cos(a) * 230, my = 760 + Math.sin(a) * 200; ctx.strokeStyle = '#c9a45c'; ctx.lineWidth = 16; ctx.beginPath(); ctx.arc(mx, my, 95, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fill(); ctx.lineWidth = 26; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(mx + 68, my + 68); ctx.lineTo(mx + 160, my + 160); ctx.stroke(); ctx.restore(); }
     if (v.label) { ctx.globalAlpha = ease.out(prog(lt, 0.6, 0.4)); font(ctx, 42, 700, MONO); ctx.fillStyle = P.yellow; ctx.textAlign = 'center'; ctx.fillText(v.label.toUpperCase(), 540, 1110); ctx.textAlign = 'left'; ctx.globalAlpha = 1; }
   },
   title(ctx, v, lt) {

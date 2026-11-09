@@ -2,16 +2,17 @@
   "case": "005",
   "title": "The Locked Office",
   "music": "tense",
-  "answer": "A, the assistant. They said the spare key never left its hook, but the hook was empty. Someone used it to lock the door.",
+  "difficulty": "hard",
+  "answer": "A, the assistant. She said she was on the phone with Mr. Cole until 9:30, but his phone shows his last call ended at 7:12 PM.",
   "beats": [
     {
-      "line": "Mr. Cole was found dead in his office. The door was locked, and only the spare key could open it.",
+      "line": "Mr. Cole was found dead in his locked office. Three people say they couldn't have done it. One is lying.",
       "visual": {
         "type": "title",
         "case": "005",
-        "title": "The\nLocked Office",
+        "title": "The Locked Office",
         "sub": "Cole Tower",
-        "stamp": "WHO DID IT?"
+        "stamp": "HARD MODE"
       }
     },
     {
@@ -23,46 +24,85 @@
       }
     },
     {
-      "line": "Suspect A. The assistant says the spare key never left its hook.",
+      "line": "The assistant says she was on the phone with Mr. Cole until 9:30, and he sounded fine.",
       "visual": {
         "type": "suspect",
         "letter": "A",
         "name": "The Assistant",
         "look": "glasses",
-        "alibi": "The key never left its hook."
+        "alibi": "On the phone with him till 9:30."
       }
     },
     {
-      "line": "Suspect B. The cousin says he was waiting in the lobby.",
+      "line": "The cousin says he was waiting in the lobby from nine.",
       "visual": {
         "type": "suspect",
         "letter": "B",
         "name": "The Cousin",
         "look": "beanie",
-        "alibi": "Waiting in the lobby."
+        "alibi": "In the lobby from nine."
       }
     },
     {
-      "line": "Suspect C. The doctor says she was on a phone call all evening.",
+      "line": "The doctor says she was on a video call with a patient all evening.",
       "visual": {
         "type": "suspect",
         "letter": "C",
         "name": "The Doctor",
         "look": "doctor",
-        "alibi": "On a call all evening."
+        "alibi": "On a video call all evening."
       }
     },
     {
-      "line": "Then the detective checked the spare key hook. It was empty.",
+      "line": "Clue one: the lobby log. The cousin signed in at 9:02.",
       "visual": {
         "type": "clue",
         "n": 1,
-        "icon": "hook",
-        "label": "Spare key hook: empty"
+        "icon": "receipt",
+        "iconOpts": {
+          "title": "Visitor log",
+          "lines": [
+            "R. COLE (cousin)",
+            "IN 9:02 PM"
+          ]
+        },
+        "label": "Lobby log: cousin in at 9:02"
       }
     },
     {
-      "line": "So, who's lying? A, B, or C?",
+      "line": "Clue two: the doctor's laptop. A video call from eight to 10:30.",
+      "visual": {
+        "type": "clue",
+        "n": 2,
+        "icon": "phone",
+        "iconOpts": {
+          "title": "Call history",
+          "lines": [
+            "Video call",
+            "8:00 to 10:30 PM"
+          ]
+        },
+        "label": "Doctor's call: 8:00 to 10:30"
+      }
+    },
+    {
+      "line": "Clue three: Mr. Cole's own phone. His last call ended at 7:12.",
+      "visual": {
+        "type": "clue",
+        "n": 3,
+        "icon": "phone",
+        "iconOpts": {
+          "title": "Recent calls",
+          "lines": [
+            "Last call ended",
+            "7:12 PM"
+          ]
+        },
+        "label": "Mr. Cole's last call: 7:12 PM"
+      }
+    },
+    {
+      "line": "Only one alibi doesn't add up. Who's lying? A, B, or C?",
       "visual": {
         "type": "lineup",
         "title": "Who's lying?",
@@ -81,7 +121,7 @@
           }
         ]
       },
-      "pause": 1.2
+      "pause": 1.5
     },
     {
       "line": "Comment your answer. The solution is in the pinned comment.",
@@ -89,31 +129,32 @@
         "type": "cta",
         "text": "Solve it\nin the comments",
         "next": "Next: Case 006",
-        "stamp": "CASE OPEN"
+        "stamp": "HARD MODE"
       }
     }
   ],
   "cover": {
     "lines": [
-      "Locked",
-      "from inside",
-      "who had the key?"
+      "Locked room",
+      "3 clues",
+      "can you solve it?"
     ],
     "highlight": 1,
     "icon": "key",
-    "stamp": "WHO DID IT?"
+    "stamp": "HARD MODE"
   },
   "upload": {
-    "title": "Locked From The Inside 🔑 Who Did It? #shorts",
-    "description": "Mr. Cole was found dead in a locked office. The assistant, the cousin and the doctor all have alibis, but one detail exposes the liar. Can you solve it? Answer in the pinned comment.",
+    "title": "The Locked Room Mystery 🔑 Only Detectives Solve This #shorts",
+    "description": "Mr. Cole was found dead in his locked office. The assistant, the cousin and the doctor all have alibis. Three clues, one liar. Can you solve it? Answer in the pinned comment.",
     "hashtags": [
       "mystery",
-      "brainteaser"
+      "brainteaser",
+      "hardriddle"
     ],
     "tags": [
       "murder mystery",
       "whodunit",
-      "riddle",
+      "hard riddle",
       "detective riddle",
       "who is lying",
       "brain teaser",
@@ -121,6 +162,6 @@
       "can you solve it",
       "locked room mystery"
     ],
-    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nA, the assistant. They said the spare key never left its hook, but the hook was empty. Someone used it to lock the door."
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nA, the assistant. She said she was on the phone with Mr. Cole until 9:30, but his phone shows his last call ended at 7:12 PM."
   }
 }

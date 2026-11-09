@@ -2,7 +2,8 @@
   "case": "004",
   "title": "The Blackout",
   "music": "tense",
-  "answer": "B, the sister. She said she watched TV until ten, but the power was out from nine until eleven. The TV couldn't have been on.",
+  "difficulty": "hard",
+  "answer": "B, the sister. The power was out from 9 to 11, so she couldn't have watched TV until ten. (The candle and the blinking clock just confirm the power cut. The low battery is a red herring.)",
   "beats": [
     {
       "line": "Mrs. Lane was found dead during a storm. Three people were in the house. One of them is lying.",
@@ -11,19 +12,19 @@
         "case": "004",
         "title": "The Blackout",
         "sub": "Lane House",
-        "stamp": "WHO DID IT?"
+        "stamp": "HARD MODE"
       }
     },
     {
-      "line": "The storm knocked the power out from nine until eleven.",
+      "line": "That night, the storm cut the power from nine until eleven.",
       "visual": {
         "type": "scene",
         "setting": "dark",
-        "label": "Lane House · power out 9–11 PM"
+        "label": "Lane House · storm night"
       }
     },
     {
-      "line": "Suspect A. The neighbour says she was reading by candlelight.",
+      "line": "The neighbour says she was reading by candlelight.",
       "visual": {
         "type": "suspect",
         "letter": "A",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "line": "Suspect B. The sister says she watched her favourite TV show until ten.",
+      "line": "The sister says she watched her favourite show until ten.",
       "visual": {
         "type": "suspect",
         "letter": "B",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "line": "Suspect C. The nephew says he was asleep since eight.",
+      "line": "The nephew says he was asleep since eight.",
       "visual": {
         "type": "suspect",
         "letter": "C",
@@ -53,16 +54,46 @@
       }
     },
     {
-      "line": "Remember. The power was out from nine until eleven.",
+      "line": "Clue one: a candle in the neighbour's room, burned halfway down.",
       "visual": {
         "type": "clue",
         "n": 1,
-        "icon": "tv",
-        "label": "No power from 9 to 11"
+        "icon": "candle",
+        "label": "Neighbour's candle: half burned"
       }
     },
     {
-      "line": "So, who's lying? A, B, or C?",
+      "line": "Clue two: the nephew's alarm clock, blinking twelve o'clock.",
+      "visual": {
+        "type": "clue",
+        "n": 2,
+        "icon": "clock",
+        "iconOpts": {
+          "digital": true,
+          "blink": true,
+          "time": "12:00"
+        },
+        "label": "Nephew's clock: blinking 12:00"
+      }
+    },
+    {
+      "line": "Clue three: the sister's phone, on two percent battery.",
+      "visual": {
+        "type": "clue",
+        "n": 3,
+        "icon": "phone",
+        "iconOpts": {
+          "title": "Battery",
+          "lines": [
+            "Low battery",
+            "2%"
+          ]
+        },
+        "label": "Sister's phone: 2% battery"
+      }
+    },
+    {
+      "line": "Only one alibi doesn't add up. Who's lying? A, B, or C?",
       "visual": {
         "type": "lineup",
         "title": "Who's lying?",
@@ -81,7 +112,7 @@
           }
         ]
       },
-      "pause": 1.2
+      "pause": 1.5
     },
     {
       "line": "Comment your answer. The solution is in the pinned comment.",
@@ -89,31 +120,32 @@
         "type": "cta",
         "text": "Solve it\nin the comments",
         "next": "Next: Case 005",
-        "stamp": "CASE OPEN"
+        "stamp": "HARD MODE"
       }
     }
   ],
   "cover": {
     "lines": [
-      "The power",
-      "was out",
-      "so who lied?"
+      "Lights out",
+      "who's lying?",
+      "95% get it wrong"
     ],
     "highlight": 1,
-    "icon": "tv",
-    "stamp": "WHO DID IT?"
+    "icon": "candle",
+    "stamp": "HARD MODE"
   },
   "upload": {
-    "title": "The Power Was Out… So Who's Lying? ⚡ #shorts",
-    "description": "Mrs. Lane was found dead during a blackout. The neighbour, the sister and the nephew all have alibis, but one of them made a big mistake. Can you solve it? Answer in the pinned comment.",
+    "title": "95% Get This Wrong 🕯️ Who Did It? #shorts",
+    "description": "Mrs. Lane was found dead on a stormy night. The neighbour, the sister and the nephew all have alibis. Three clues, one liar. Can you solve it? Answer in the pinned comment.",
     "hashtags": [
       "mystery",
-      "brainteaser"
+      "brainteaser",
+      "hardriddle"
     ],
     "tags": [
       "murder mystery",
       "whodunit",
-      "riddle",
+      "hard riddle",
       "detective riddle",
       "who is lying",
       "brain teaser",
@@ -121,6 +153,6 @@
       "can you solve it",
       "blackout riddle"
     ],
-    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the sister. She said she watched TV until ten, but the power was out from nine until eleven. The TV couldn't have been on."
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the sister. The power was out from 9 to 11, so she couldn't have watched TV until ten. (The candle and the blinking clock just confirm the power cut. The low battery is a red herring.)"
   }
 }
