@@ -28,6 +28,10 @@ Each beat lasts as long as its narration. Captions and sound design are added au
 | `icon` | `icon`, `label`, `scale` | Generic scene |
 | `versus` | `a`, `b` | The A/B question |
 | `cta` | `text`, `next`, `stamp` | Ending + next case teaser |
+| `scene` | `label`, `lit` (window indexes), `lightning` | Setting the scene (mansion at night, rain) |
+| `suspect` | `letter` (A/B/C), `name`, `look`, `alibi` | One suspect + their alibi |
+| `clue` | `n`, `icon`, `iconOpts`, `label` | The evidence (magnifier sweep) |
+| `lineup` | `title`, `suspects: [{name, look}]`, `question` | "Who's lying?" |
 
-Icons: `dish`, `burst`, `cloud`, `earth`, `ship`, `book`, `question`, `wave`. Add more in `shorts/visuals.js` (`ICONS`).
+Icons: `boots`, `clock`, `cup`, `key`, `dish`, `burst`, `cloud`, `earth`, `ship`, `book`, `question`, `wave`. Suspect looks: gardener, niece, butler, chef, glasses, plain. Add more in `shorts/visuals.js` (`ICONS`).
 SFX (optional per beat): buzz, ding, knock, thud, whoosh, steps, heartbeat, static, power-down, door, gasp, sting.

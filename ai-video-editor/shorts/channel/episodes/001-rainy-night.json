@@ -1,0 +1,24 @@
+{
+  "case": "001",
+  "title": "The Rainy Night",
+  "music": "mystery",
+  "answer": "A, the gardener. It rained all night, so if he'd really been out in the greenhouse his boots would be muddy. They were spotless.",
+  "beats": [
+    { "line": "Mr. Hale was found dead in his study. Three people were home. One of them is lying.", "visual": { "type": "title", "case": "001", "title": "The Rainy\nNight", "sub": "Hale Manor, 11:00 PM", "stamp": "WHO DID IT?" } },
+    { "line": "It rained all night at Hale Manor.", "visual": { "type": "scene", "label": "Hale Manor · raining all night" } },
+    { "line": "Suspect A. The gardener says he was working in the greenhouse all night.", "visual": { "type": "suspect", "letter": "A", "name": "The Gardener", "look": "gardener", "alibi": "Greenhouse, all night." } },
+    { "line": "Suspect B. The niece says she was asleep upstairs.", "visual": { "type": "suspect", "letter": "B", "name": "The Niece", "look": "niece", "alibi": "Asleep upstairs." } },
+    { "line": "Suspect C. The butler says he was polishing silver in the kitchen.", "visual": { "type": "suspect", "letter": "C", "name": "The Butler", "look": "butler", "alibi": "Polishing silver." } },
+    { "line": "But the detective noticed one thing. The gardener's boots were spotless.", "visual": { "type": "clue", "n": 1, "icon": "boots", "label": "Gardener's boots: spotless" } },
+    { "line": "So, who's lying? A, B, or C?", "visual": { "type": "lineup", "title": "Who's lying?", "suspects": [ { "name": "Gardener", "look": "gardener" }, { "name": "Niece", "look": "niece" }, { "name": "Butler", "look": "butler" } ] }, "pause": 1.2 },
+    { "line": "Comment your answer. The solution is in the pinned comment.", "visual": { "type": "cta", "text": "Solve it\nin the comments", "next": "Answer: pinned comment", "stamp": "CASE OPEN" } }
+  ],
+  "cover": { "lines": ["One of them", "is lying", "can you tell?"], "highlight": 1, "icon": "boots", "stamp": "WHO DID IT?" },
+  "upload": {
+    "title": "Only 1% Spot The Liar 🕵️ Who Did It? #shorts",
+    "description": "Mr. Hale was found dead on a rainy night. The gardener, the niece and the butler all have alibis, but one clue gives the liar away. Can you solve it? Answer in the pinned comment.",
+    "hashtags": ["mystery", "brainteaser"],
+    "tags": ["murder mystery", "whodunit", "riddle", "detective riddle", "who is lying", "brain teaser", "mystery puzzle", "can you solve it"],
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nA, the gardener. It rained ALL night. If he'd really been in the greenhouse, his boots would be muddy, but they were spotless."
+  }
+}

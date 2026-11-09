@@ -45,6 +45,10 @@ for (const [i, b] of ep.beats.entries()) {
     diagram: () => cues.push({ t: at(0.2), sfx: 'whoosh' }),
     versus: () => cues.push({ t: at(0.1), sfx: 'pop' }, { t: at(0.45), sfx: 'pop' }, { t: at(0.8), sfx: 'thud' }),
     cta: () => cues.push({ t: at(0.5), sfx: 'thud' }),
+    scene: () => cues.push({ t: at(0.5), sfx: 'thud' }),
+    suspect: () => cues.push({ t: at(0), sfx: 'swish' }, { t: at(0.5), sfx: 'pop' }),
+    lineup: () => cues.push({ t: at(0.15), sfx: 'pop' }, { t: at(0.35), sfx: 'pop' }, { t: at(0.55), sfx: 'pop' }),
+    clue: () => cues.push({ t: at(0), sfx: 'sting' }),
   }[v.type] || (() => {}))();
   if (i > 0 && !['title', 'word'].includes(v.type)) cues.push({ t: T, sfx: 'swish' });
   if (b.sfx) cues.push({ t: T + (b.sfxAt || 0), sfx: b.sfx });
@@ -140,7 +144,7 @@ function cover() {
   background(ctx, 0.5);
   ctx.save(); ctx.translate(540, 1050); ctx.scale(1.5, 1.5); (ICONS[cv.icon || 'question'] || ICONS.question)(ctx, 1.2); ctx.restore();
   font(ctx, 150, 900, DISPLAY); ctx.textAlign = 'center'; ctx.lineJoin = 'round';
-  (cv.lines || [ep.title]).forEach((l, i) => { const y = 470 + i * 165; ctx.strokeStyle = '#000'; ctx.lineWidth = 20; ctx.strokeText(l.toUpperCase(), 540, y); ctx.fillStyle = i === (cv.highlight ?? 1) ? P.red : '#fff'; ctx.fillText(l.toUpperCase(), 540, y); });
+  (cv.lines || [ep.title]).forEach((l, i) => { const y = 470 + i * 165; font(ctx, 150, 900, DISPLAY); const fw = ctx.measureText(l.toUpperCase()).width; if (fw > 940) font(ctx, Math.floor(150 * 940 / fw), 900, DISPLAY); ctx.strokeStyle = '#000'; ctx.lineWidth = 20; ctx.strokeText(l.toUpperCase(), 540, y); ctx.fillStyle = i === (cv.highlight ?? 1) ? P.red : '#fff'; ctx.fillText(l.toUpperCase(), 540, y); });
   ctx.textAlign = 'left';
   stamp(ctx, cv.stamp || 'UNSOLVED', 560, 1420, -0.12, 1, P.red, 90);
   font(ctx, 40, 800, MONO); ctx.fillStyle = P.red; ctx.fillText(`CASE ${ep.case || '001'}`, 90, 250);

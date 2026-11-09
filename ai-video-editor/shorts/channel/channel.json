@@ -1,27 +1,15 @@
 {
-  "name": "Still Unsolved",
-  "niche": "Real unsolved mysteries and strange events, told in under a minute",
-  "format": "YouTube Shorts, 1080x1920, 35-55s",
-  "voice": {
-    "gender": "male",
-    "kokoro": "am_michael",
-    "kokoroSpeed": 1.08,
-    "espeak": "en-us+m3",
-    "pitch": 35,
-    "speed": 168
-  },
+  "name": "Who Did It?",
+  "niche": "30-second fictional murder mysteries viewers solve in the comments",
+  "format": "YouTube Shorts, 1080x1920, 30-40s",
+  "voice": { "gender": "male", "kokoro": "am_michael", "kokoroSpeed": 1.05, "espeak": "en-us+m3", "pitch": 35, "speed": 168 },
   "music": "mystery",
-  "hashtags": [
-    "shorts",
-    "mystery",
-    "unsolved",
-    "unsolvedmysteries",
-    "strange"
-  ],
+  "hashtags": ["shorts", "murdermystery", "whodunit", "riddle", "puzzle", "detective"],
   "rules": [
-    "Real, well-documented cases only. Every fact must be checked with a web search and listed in sources.",
-    "No gore, no graphic descriptions of death, and nothing involving real victims' families. Keep it suitable for a 13+ audience.",
-    "Present theories as theories. Never state a disputed claim as fact.",
-    "Hook in the first 3 seconds; end on an open question + comment prompt."
+    "Fictional cases only: invented names and places. Never base a case on a real crime or real people.",
+    "No gore or graphic detail. The victim is simply 'found dead'. Keep it suitable for a 13+ audience.",
+    "Every case is fair: 3 suspects (A, B, C), each gives an alibi, and exactly ONE clue shown on screen proves who is lying.",
+    "The clue must be solvable from what the viewer sees and hears. No hidden information.",
+    "Never say the answer in the video. It goes in the pinned comment."
   ]
 }
