@@ -1,0 +1,126 @@
+{
+  "case": "005",
+  "title": "The Locked Office",
+  "music": "tense",
+  "answer": "A, the assistant. They said the spare key never left its hook, but the hook was empty. Someone used it to lock the door.",
+  "beats": [
+    {
+      "line": "Mr. Cole was found dead in his office. The door was locked, and only the spare key could open it.",
+      "visual": {
+        "type": "title",
+        "case": "005",
+        "title": "The\nLocked Office",
+        "sub": "Cole Tower",
+        "stamp": "WHO DID IT?"
+      }
+    },
+    {
+      "line": "Late at night, on the top floor of Cole Tower.",
+      "visual": {
+        "type": "scene",
+        "setting": "city",
+        "label": "Cole Tower · top floor"
+      }
+    },
+    {
+      "line": "Suspect A. The assistant says the spare key never left its hook.",
+      "visual": {
+        "type": "suspect",
+        "letter": "A",
+        "name": "The Assistant",
+        "look": "glasses",
+        "alibi": "The key never left its hook."
+      }
+    },
+    {
+      "line": "Suspect B. The cousin says he was waiting in the lobby.",
+      "visual": {
+        "type": "suspect",
+        "letter": "B",
+        "name": "The Cousin",
+        "look": "beanie",
+        "alibi": "Waiting in the lobby."
+      }
+    },
+    {
+      "line": "Suspect C. The doctor says she was on a phone call all evening.",
+      "visual": {
+        "type": "suspect",
+        "letter": "C",
+        "name": "The Doctor",
+        "look": "doctor",
+        "alibi": "On a call all evening."
+      }
+    },
+    {
+      "line": "Then the detective checked the spare key hook. It was empty.",
+      "visual": {
+        "type": "clue",
+        "n": 1,
+        "icon": "hook",
+        "label": "Spare key hook: empty"
+      }
+    },
+    {
+      "line": "So, who's lying? A, B, or C?",
+      "visual": {
+        "type": "lineup",
+        "title": "Who's lying?",
+        "suspects": [
+          {
+            "name": "Assistant",
+            "look": "glasses"
+          },
+          {
+            "name": "Cousin",
+            "look": "beanie"
+          },
+          {
+            "name": "Doctor",
+            "look": "doctor"
+          }
+        ]
+      },
+      "pause": 1.2
+    },
+    {
+      "line": "Comment your answer. The solution is in the pinned comment.",
+      "visual": {
+        "type": "cta",
+        "text": "Solve it\nin the comments",
+        "next": "Next: Case 006",
+        "stamp": "CASE OPEN"
+      }
+    }
+  ],
+  "cover": {
+    "lines": [
+      "Locked",
+      "from inside",
+      "who had the key?"
+    ],
+    "highlight": 1,
+    "icon": "key",
+    "stamp": "WHO DID IT?"
+  },
+  "upload": {
+    "title": "Locked From The Inside 🔑 Who Did It? #shorts",
+    "description": "Mr. Cole was found dead in a locked office. The assistant, the cousin and the doctor all have alibis, but one detail exposes the liar. Can you solve it? Answer in the pinned comment.",
+    "hashtags": [
+      "mystery",
+      "brainteaser"
+    ],
+    "tags": [
+      "murder mystery",
+      "whodunit",
+      "riddle",
+      "detective riddle",
+      "who is lying",
+      "brain teaser",
+      "mystery puzzle",
+      "can you solve it",
+      "locked room mystery"
+    ],
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nA, the assistant. They said the spare key never left its hook, but the hook was empty. Someone used it to lock the door."
+  }
+}

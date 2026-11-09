@@ -1,0 +1,129 @@
+{
+  "case": "003",
+  "title": "The Train Ticket",
+  "music": "mystery",
+  "answer": "C, the guest. He said his train arrived at midnight, but his ticket was stamped 10:45 PM, so he was there before 11:15.",
+  "beats": [
+    {
+      "line": "Mr. Price was found dead at his country house. His watch had stopped at exactly 11:15.",
+      "visual": {
+        "type": "title",
+        "case": "003",
+        "title": "The\nTrain Ticket",
+        "sub": "Price Manor",
+        "stamp": "WHO DID IT?"
+      }
+    },
+    {
+      "line": "Whoever did it was in the house at 11:15.",
+      "visual": {
+        "type": "scene",
+        "setting": "manor",
+        "label": "Price Manor · 11:15 PM"
+      }
+    },
+    {
+      "line": "Suspect A. The driver says he was in the garage all night.",
+      "visual": {
+        "type": "suspect",
+        "letter": "A",
+        "name": "The Driver",
+        "look": "driver",
+        "alibi": "In the garage all night."
+      }
+    },
+    {
+      "line": "Suspect B. The cook says she was baking bread since ten.",
+      "visual": {
+        "type": "suspect",
+        "letter": "B",
+        "name": "The Cook",
+        "look": "chef",
+        "alibi": "Baking bread since ten."
+      }
+    },
+    {
+      "line": "Suspect C. The guest says his train only arrived at midnight.",
+      "visual": {
+        "type": "suspect",
+        "letter": "C",
+        "name": "The Guest",
+        "look": "glasses",
+        "alibi": "My train got in at midnight."
+      }
+    },
+    {
+      "line": "But in the guest's pocket was his train ticket. Stamped at 10:45 PM.",
+      "visual": {
+        "type": "clue",
+        "n": 1,
+        "icon": "ticket",
+        "iconOpts": {
+          "time": "10:45 PM"
+        },
+        "label": "Guest's ticket: 10:45 PM"
+      }
+    },
+    {
+      "line": "So, who's lying? A, B, or C?",
+      "visual": {
+        "type": "lineup",
+        "title": "Who's lying?",
+        "suspects": [
+          {
+            "name": "Driver",
+            "look": "driver"
+          },
+          {
+            "name": "Cook",
+            "look": "chef"
+          },
+          {
+            "name": "Guest",
+            "look": "glasses"
+          }
+        ]
+      },
+      "pause": 1.2
+    },
+    {
+      "line": "Comment your answer. The solution is in the pinned comment.",
+      "visual": {
+        "type": "cta",
+        "text": "Solve it\nin the comments",
+        "next": "Next: Case 004",
+        "stamp": "CASE OPEN"
+      }
+    }
+  ],
+  "cover": {
+    "lines": [
+      "Stopped",
+      "at 11:15",
+      "who was there?"
+    ],
+    "highlight": 1,
+    "icon": "clock",
+    "stamp": "WHO DID IT?"
+  },
+  "upload": {
+    "title": "His Watch Stopped At 11:15 ⌚ Can You Solve It? #shorts",
+    "description": "Mr. Price's watch stopped at 11:15. The driver, the cook and the guest all have alibis, but a train ticket gives the liar away. Can you solve it? Answer in the pinned comment.",
+    "hashtags": [
+      "mystery",
+      "brainteaser"
+    ],
+    "tags": [
+      "murder mystery",
+      "whodunit",
+      "riddle",
+      "detective riddle",
+      "who is lying",
+      "brain teaser",
+      "mystery puzzle",
+      "can you solve it",
+      "train ticket riddle"
+    ],
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nC, the guest. He said his train arrived at midnight, but his ticket was stamped 10:45 PM, so he was there before 11:15."
+  }
+}

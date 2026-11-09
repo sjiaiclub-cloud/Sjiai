@@ -1,0 +1,126 @@
+{
+  "case": "006",
+  "title": "The Snowy Cabin",
+  "music": "mystery",
+  "answer": "B, the skier. It snowed until midnight. If she'd walked back at six, the new snow would have covered her footprints. They were on top, so she walked after midnight.",
+  "beats": [
+    {
+      "line": "Ms. Frost was found dead in her mountain cabin. Three friends were staying nearby. One of them is lying.",
+      "visual": {
+        "type": "title",
+        "case": "006",
+        "title": "The\nSnowy Cabin",
+        "sub": "Frost Cabin",
+        "stamp": "WHO DID IT?"
+      }
+    },
+    {
+      "line": "That night, it snowed until midnight.",
+      "visual": {
+        "type": "scene",
+        "setting": "cabin",
+        "label": "Frost Cabin · snow until midnight"
+      }
+    },
+    {
+      "line": "Suspect A. The guide says he never left the lodge.",
+      "visual": {
+        "type": "suspect",
+        "letter": "A",
+        "name": "The Guide",
+        "look": "beanie",
+        "alibi": "Never left the lodge."
+      }
+    },
+    {
+      "line": "Suspect B. The skier says she got back at six, long before the snow stopped.",
+      "visual": {
+        "type": "suspect",
+        "letter": "B",
+        "name": "The Skier",
+        "look": "ponytail",
+        "alibi": "Got back at six."
+      }
+    },
+    {
+      "line": "Suspect C. The friend says she was asleep all night.",
+      "visual": {
+        "type": "suspect",
+        "letter": "C",
+        "name": "The Friend",
+        "look": "glasses",
+        "alibi": "Asleep all night."
+      }
+    },
+    {
+      "line": "But leading from the cabin were the skier's footprints, right on top of the fresh snow.",
+      "visual": {
+        "type": "clue",
+        "n": 1,
+        "icon": "footprints",
+        "label": "Skier's prints: on top of fresh snow"
+      }
+    },
+    {
+      "line": "So, who's lying? A, B, or C?",
+      "visual": {
+        "type": "lineup",
+        "title": "Who's lying?",
+        "suspects": [
+          {
+            "name": "Guide",
+            "look": "beanie"
+          },
+          {
+            "name": "Skier",
+            "look": "ponytail"
+          },
+          {
+            "name": "Friend",
+            "look": "glasses"
+          }
+        ]
+      },
+      "pause": 1.2
+    },
+    {
+      "line": "Comment your answer. The solution is in the pinned comment.",
+      "visual": {
+        "type": "cta",
+        "text": "Solve it\nin the comments",
+        "next": "Next: Case 007",
+        "stamp": "CASE OPEN"
+      }
+    }
+  ],
+  "cover": {
+    "lines": [
+      "The snow",
+      "gave her away",
+      "can you see it?"
+    ],
+    "highlight": 1,
+    "icon": "footprints",
+    "stamp": "WHO DID IT?"
+  },
+  "upload": {
+    "title": "The Snow Gave Them Away ❄️ Can You Spot It? #shorts",
+    "description": "Ms. Frost was found dead in her snowy cabin. The guide, the skier and the friend all have alibis, but the snow tells the truth. Can you solve it? Answer in the pinned comment.",
+    "hashtags": [
+      "mystery",
+      "brainteaser"
+    ],
+    "tags": [
+      "murder mystery",
+      "whodunit",
+      "riddle",
+      "detective riddle",
+      "who is lying",
+      "brain teaser",
+      "mystery puzzle",
+      "can you solve it",
+      "snow footprints riddle"
+    ],
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the skier. It snowed until midnight. If she'd walked back at six, the new snow would have covered her footprints. They were on top, so she walked after midnight."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "case": "007",
+  "title": "The Birthday Cake",
+  "music": "tense",
+  "answer": "C, the brother. He said he never went near the cake, but his sleeve was covered in the cake's pink frosting.",
+  "beats": [
+    {
+      "line": "Uncle Rob was found dead at his own birthday party, right next to the cake.",
+      "visual": {
+        "type": "title",
+        "case": "007",
+        "title": "The\nBirthday Cake",
+        "sub": "Rob's 50th",
+        "stamp": "WHO DID IT?"
+      }
+    },
+    {
+      "line": "The party was loud, and nobody saw a thing.",
+      "visual": {
+        "type": "scene",
+        "setting": "party",
+        "label": "Rob's 50th · 10:00 PM"
+      }
+    },
+    {
+      "line": "Suspect A. The baker says she left right after delivering the cake.",
+      "visual": {
+        "type": "suspect",
+        "letter": "A",
+        "name": "The Baker",
+        "look": "chef",
+        "alibi": "Left right after delivery."
+      }
+    },
+    {
+      "line": "Suspect B. The best friend says she was dancing all night.",
+      "visual": {
+        "type": "suspect",
+        "letter": "B",
+        "name": "The Best Friend",
+        "look": "niece",
+        "alibi": "Dancing all night."
+      }
+    },
+    {
+      "line": "Suspect C. The brother says he doesn't eat sweets, and never went near the cake.",
+      "visual": {
+        "type": "suspect",
+        "letter": "C",
+        "name": "The Brother",
+        "look": "driver",
+        "alibi": "Never went near the cake."
+      }
+    },
+    {
+      "line": "But the detective noticed the brother's sleeve. It was covered in pink frosting.",
+      "visual": {
+        "type": "clue",
+        "n": 1,
+        "icon": "sleeve",
+        "label": "Brother's sleeve: pink frosting"
+      }
+    },
+    {
+      "line": "So, who's lying? A, B, or C?",
+      "visual": {
+        "type": "lineup",
+        "title": "Who's lying?",
+        "suspects": [
+          {
+            "name": "Baker",
+            "look": "chef"
+          },
+          {
+            "name": "Best Friend",
+            "look": "niece"
+          },
+          {
+            "name": "Brother",
+            "look": "driver"
+          }
+        ]
+      },
+      "pause": 1.2
+    },
+    {
+      "line": "Comment your answer. The solution is in the pinned comment.",
+      "visual": {
+        "type": "cta",
+        "text": "Solve it\nin the comments",
+        "next": "Next: Case 008",
+        "stamp": "CASE OPEN"
+      }
+    }
+  ],
+  "cover": {
+    "lines": [
+      "Happy",
+      "birthday?",
+      "find the liar"
+    ],
+    "highlight": 1,
+    "icon": "sleeve",
+    "stamp": "WHO DID IT?"
+  },
+  "upload": {
+    "title": "Who Ruined The Birthday? 🎂 Find The Liar #shorts",
+    "description": "Uncle Rob was found dead at his birthday party. The baker, the best friend and the brother all have alibis, but one of them left a sweet clue. Can you solve it? Answer in the pinned comment.",
+    "hashtags": [
+      "mystery",
+      "brainteaser"
+    ],
+    "tags": [
+      "murder mystery",
+      "whodunit",
+      "riddle",
+      "detective riddle",
+      "who is lying",
+      "brain teaser",
+      "mystery puzzle",
+      "can you solve it",
+      "birthday riddle"
+    ],
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nC, the brother. He said he never went near the cake, but his sleeve was covered in the cake's pink frosting."
+  }
+}

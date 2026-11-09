@@ -1,0 +1,126 @@
+{
+  "case": "004",
+  "title": "The Blackout",
+  "music": "tense",
+  "answer": "B, the sister. She said she watched TV until ten, but the power was out from nine until eleven. The TV couldn't have been on.",
+  "beats": [
+    {
+      "line": "Mrs. Lane was found dead during a storm. Three people were in the house. One of them is lying.",
+      "visual": {
+        "type": "title",
+        "case": "004",
+        "title": "The Blackout",
+        "sub": "Lane House",
+        "stamp": "WHO DID IT?"
+      }
+    },
+    {
+      "line": "The storm knocked the power out from nine until eleven.",
+      "visual": {
+        "type": "scene",
+        "setting": "dark",
+        "label": "Lane House · power out 9–11 PM"
+      }
+    },
+    {
+      "line": "Suspect A. The neighbour says she was reading by candlelight.",
+      "visual": {
+        "type": "suspect",
+        "letter": "A",
+        "name": "The Neighbour",
+        "look": "plain",
+        "alibi": "Reading by candlelight."
+      }
+    },
+    {
+      "line": "Suspect B. The sister says she watched her favourite TV show until ten.",
+      "visual": {
+        "type": "suspect",
+        "letter": "B",
+        "name": "The Sister",
+        "look": "ponytail",
+        "alibi": "Watched my show until ten."
+      }
+    },
+    {
+      "line": "Suspect C. The nephew says he was asleep since eight.",
+      "visual": {
+        "type": "suspect",
+        "letter": "C",
+        "name": "The Nephew",
+        "look": "curly",
+        "alibi": "Asleep since eight."
+      }
+    },
+    {
+      "line": "Remember. The power was out from nine until eleven.",
+      "visual": {
+        "type": "clue",
+        "n": 1,
+        "icon": "tv",
+        "label": "No power from 9 to 11"
+      }
+    },
+    {
+      "line": "So, who's lying? A, B, or C?",
+      "visual": {
+        "type": "lineup",
+        "title": "Who's lying?",
+        "suspects": [
+          {
+            "name": "Neighbour",
+            "look": "plain"
+          },
+          {
+            "name": "Sister",
+            "look": "ponytail"
+          },
+          {
+            "name": "Nephew",
+            "look": "curly"
+          }
+        ]
+      },
+      "pause": 1.2
+    },
+    {
+      "line": "Comment your answer. The solution is in the pinned comment.",
+      "visual": {
+        "type": "cta",
+        "text": "Solve it\nin the comments",
+        "next": "Next: Case 005",
+        "stamp": "CASE OPEN"
+      }
+    }
+  ],
+  "cover": {
+    "lines": [
+      "The power",
+      "was out",
+      "so who lied?"
+    ],
+    "highlight": 1,
+    "icon": "tv",
+    "stamp": "WHO DID IT?"
+  },
+  "upload": {
+    "title": "The Power Was Out… So Who's Lying? ⚡ #shorts",
+    "description": "Mrs. Lane was found dead during a blackout. The neighbour, the sister and the nephew all have alibis, but one of them made a big mistake. Can you solve it? Answer in the pinned comment.",
+    "hashtags": [
+      "mystery",
+      "brainteaser"
+    ],
+    "tags": [
+      "murder mystery",
+      "whodunit",
+      "riddle",
+      "detective riddle",
+      "who is lying",
+      "brain teaser",
+      "mystery puzzle",
+      "can you solve it",
+      "blackout riddle"
+    ],
+    "pinned": "🔎 ANSWER (guess first!) ⬇️\n\n\n\nB, the sister. She said she watched TV until ten, but the power was out from nine until eleven. The TV couldn't have been on."
+  }
+}
