@@ -10,7 +10,8 @@
     "movie-month": "node videos/movie-month/render.js",
     "risky-text": "node videos/risky-text/render.js",
     "episode": "node series/render-episode.js",
-    "short": "node shorts/render-short.js"
+    "short": "node shorts/render-short.js",
+    "ball-battle": "node viral/ball-battle.js"
   },
   "keywords": [],
   "author": "",
