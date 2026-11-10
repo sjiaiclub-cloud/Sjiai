@@ -11,7 +11,8 @@
     "risky-text": "node videos/risky-text/render.js",
     "episode": "node series/render-episode.js",
     "short": "node shorts/render-short.js",
-    "ball-battle": "node viral/ball-battle.js"
+    "ball-battle": "node viral/ball-battle.js",
+    "story": "node viral/story.js"
   },
   "keywords": [],
   "author": "",

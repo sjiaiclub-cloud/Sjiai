@@ -6,6 +6,37 @@ const glow = (ctx, x, y, r, color) => { const g = ctx.createRadialGradient(x, y,
 const stars = (ctx, x0, y0, w, h, n, t) => { for (let i = 0; i < n; i++) { ctx.fillStyle = `rgba(255,255,255,${0.3 + 0.7 * Math.abs(Math.sin(t * 1.5 + i))})`; ctx.fillRect(x0 + R(i) * w, y0 + R(i + 99) * h, 3, 3); } };
 
 export const SETS = {
+  'hallway-night': {
+    tint: 'rgba(20,30,70,0.25)',
+    draw(ctx, t) {
+      ctx.fillStyle = '#0c0f1c'; ctx.fillRect(0, 0, W, H);
+      const vx = 540, vy = 900;
+      ctx.fillStyle = '#141a2e'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(vx - 150, vy - 260); ctx.lineTo(vx - 150, vy + 260); ctx.lineTo(0, H); ctx.fill();
+      ctx.fillStyle = '#10152a'; ctx.beginPath(); ctx.moveTo(W, 0); ctx.lineTo(vx + 150, vy - 260); ctx.lineTo(vx + 150, vy + 260); ctx.lineTo(W, H); ctx.fill();
+      ctx.fillStyle = '#0a0d18'; ctx.beginPath(); ctx.moveTo(0, H); ctx.lineTo(vx - 150, vy + 260); ctx.lineTo(vx + 150, vy + 260); ctx.lineTo(W, H); ctx.fill();
+      ctx.fillStyle = '#1b2240'; ctx.fillRect(vx - 150, vy - 260, 300, 520);
+      ctx.fillStyle = '#2a2140'; ctx.fillRect(vx - 80, vy - 150, 160, 410); ctx.fillStyle = '#c9a45c'; ctx.beginPath(); ctx.arc(vx + 55, vy + 60, 8, 0, Math.PI * 2); ctx.fill();
+      const flick = 0.75 + 0.25 * Math.sin(t * 11) * Math.sin(t * 3.7);
+      ctx.fillStyle = `rgba(255,190,120,${0.5 * flick})`; ctx.fillRect(vx - 80, vy + 255, 160, 6);
+      glow(ctx, vx, vy + 262, 160, `rgba(255,170,90,${0.25 * flick})`);
+      [[150, 520, 0.12], [930, 600, 0.1]].forEach(([x, y, a]) => { ctx.fillStyle = `rgba(160,180,255,${a})`; ctx.fillRect(x - 60, y - 80, 120, 160); });
+      ctx.fillStyle = 'rgba(190,205,255,0.05)'; ctx.beginPath(); ctx.moveTo(0, 300); ctx.lineTo(260, 380); ctx.lineTo(420, 1900); ctx.lineTo(0, 1900); ctx.fill();
+    },
+  },
+  'kids-room-night': {
+    tint: 'rgba(30,40,100,0.2)',
+    draw(ctx, t) {
+      ctx.fillStyle = grad(ctx, ['#1c2244', '#11152b']); ctx.fillRect(0, 0, W, H);
+      for (let i = 0; i < 24; i++) { ctx.fillStyle = `rgba(255,240,180,${0.2 + 0.2 * Math.sin(t + i)})`; const x = 60 + (i * 211) % 960, y = 200 + (i * 137) % 600; ctx.beginPath(); for (let k = 0; k < 5; k++) { const a = (k / 5) * Math.PI * 2 - Math.PI / 2; ctx.lineTo(x + Math.cos(a) * 14, y + Math.sin(a) * 14); ctx.lineTo(x + Math.cos(a + 0.63) * 6, y + Math.sin(a + 0.63) * 6); } ctx.fill(); }
+      glow(ctx, 900, 1300, 300, 'rgba(255,200,120,0.3)'); ctx.fillStyle = '#ffcf6b'; ctx.beginPath(); ctx.arc(900, 1300, 22, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#0d1022'; ctx.fillRect(0, 1450, W, 470);
+      ctx.fillStyle = '#3a2f62'; ctx.beginPath(); ctx.roundRect(120, 1180, 720, 200, 30); ctx.fill();
+      ctx.fillStyle = '#e9d6ff'; ctx.beginPath(); ctx.roundRect(150, 1130, 220, 90, 40); ctx.fill();
+      ctx.fillStyle = '#5a4a8f'; ctx.beginPath(); ctx.ellipse(560, 1180, 230, 70, 0, Math.PI, 0); ctx.fill();
+      ctx.fillStyle = '#05060c'; ctx.fillRect(140, 1380, 680, 90);
+      ctx.fillStyle = '#2b2350'; ctx.fillRect(120, 1380, 20, 140); ctx.fillRect(820, 1380, 20, 140);
+    },
+  },
   'bedroom-night': {
     tint: 'rgba(40,50,120,0.16)',
     draw(ctx, t) {

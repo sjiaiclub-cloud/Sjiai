@@ -1,0 +1,22 @@
+{
+  "title": "The 3 AM Text",
+  "voice": { "kokoro": "am_fenrir", "kokoroSpeed": 0.95, "gender": "male" },
+  "beats": [
+    { "line": "At 3 AM, my phone buzzed. A text from my little sister's room.", "scene": "bedroom-night", "prop": { "type": "phone", "title": "Lily", "lines": ["3:02 AM"] }, "sfx": "buzz" },
+    { "line": "\"There's someone *under my bed.* Please come check.\"", "scene": "bedroom-night", "prop": { "type": "phone", "title": "Lily", "lines": ["there's someone", "under my bed", "please come check"] } },
+    { "line": "I ran down the hall and opened her door.", "scene": "hallway-night", "sfx": "steps" },
+    { "line": "She was *fast asleep.*", "scene": "kids-room-night", "sfx": "door" },
+    { "line": "I checked under her bed. *Nothing.*", "scene": "kids-room-night", "zoom": "underbed" },
+    { "line": "So I went back to bed. Then I remembered something.", "scene": "bedroom-night", "pause": 0.5 },
+    { "line": "My sister *doesn't have a phone.*", "scene": "void:#2a0a10", "sfx": "sting", "pause": 0.4 },
+    { "line": "She's *six.*", "scene": "void:#2a0a10", "pause": 0.9 },
+    { "line": "So who's been texting me?", "scene": "kids-room-night", "zoom": "underbed", "eyes": true, "pause": 0.4 },
+    { "line": "At 3 AM, my phone buzz—", "scene": "bedroom-night", "prop": { "type": "phone", "title": "Lily", "lines": ["3:02 AM"] }, "sfx": "buzz", "cut": true }
+  ],
+  "upload": {
+    "title": "Never Check Under The Bed At 3AM 😨 #shorts",
+    "description": "My little sister texted me at 3AM... then I remembered something. Did you spot it at the end? 👀",
+    "hashtags": ["shorts", "scarystories", "horrorstory", "creepy", "storytime", "3am"],
+    "pinned": "Did you see what was under the bed at the end? 👀 (watch again)"
+  }
+}
