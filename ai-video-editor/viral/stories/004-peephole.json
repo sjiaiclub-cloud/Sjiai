@@ -1,0 +1,99 @@
+{
+  "title": "The Peephole",
+  "voice": {
+    "kokoro": "am_fenrir",
+    "kokoroSpeed": 0.95,
+    "gender": "male"
+  },
+  "beats": [
+    {
+      "line": "Someone knocked on my door at 2 AM.",
+      "scene": "hallway-night",
+      "sfx": "knock"
+    },
+    {
+      "line": "I looked through the peephole. *Nobody.*",
+      "scene": "hallway-night",
+      "zoom": {
+        "x": 540,
+        "y": 960,
+        "z": 1.8
+      }
+    },
+    {
+      "line": "They knocked again. I looked again. Still nobody.",
+      "scene": "hallway-night",
+      "sfx": "knock"
+    },
+    {
+      "line": "So I opened the door.",
+      "scene": "hallway-night",
+      "sfx": "door",
+      "pause": 0.3
+    },
+    {
+      "line": "There was a note taped to it.",
+      "scene": "hallway-night",
+      "prop": {
+        "type": "note",
+        "lines": [
+          "Thanks for",
+          "checking."
+        ]
+      },
+      "pause": 0.4
+    },
+    {
+      "line": "\"Thanks for checking. *Now I know you're home.*\"",
+      "scene": "void:#200a0a",
+      "sfx": "sting",
+      "prop": {
+        "type": "note",
+        "lines": [
+          "Now I know",
+          "you're home."
+        ]
+      },
+      "pause": 0.6
+    },
+    {
+      "line": "Behind me, I heard my door *click shut.*",
+      "scene": "hallway-night",
+      "sfx": "thud",
+      "hidden": {
+        "type": "figure",
+        "x": 540,
+        "y": 1180,
+        "s": 0.6,
+        "from": 0.35,
+        "to": 0.7
+      },
+      "pause": 0.5
+    },
+    {
+      "line": "Someone knocked on my door at 2 A—",
+      "scene": "hallway-night",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "NEVER OPEN",
+      "THE DOOR"
+    ]
+  },
+  "upload": {
+    "title": "Never Open The Door At 2AM 😨 #shorts",
+    "description": "Someone kept knocking... but nobody was there. Did you see who was at the end of the hall? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "2am",
+      "creepystories"
+    ],
+    "pinned": "Who was standing at the end of the hall? 👀"
+  }
+}

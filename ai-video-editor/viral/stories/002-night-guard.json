@@ -1,0 +1,89 @@
+{
+  "title": "The Night Guard",
+  "voice": {
+    "kokoro": "am_fenrir",
+    "kokoroSpeed": 0.95,
+    "gender": "male"
+  },
+  "beats": [
+    {
+      "line": "I fell asleep in a fitting room. When I woke up, the whole mall was *dark.*",
+      "scene": "mall-night"
+    },
+    {
+      "line": "Then the speakers crackled. \"Customer, please make your way to the exit.\"",
+      "scene": "mall-night",
+      "sfx": "static"
+    },
+    {
+      "line": "Relieved, I followed the exit signs. Every door was *locked.*",
+      "scene": "mall-night",
+      "sfx": "knock",
+      "zoom": {
+        "x": 540,
+        "y": 900,
+        "z": 1.3
+      }
+    },
+    {
+      "line": "The speakers crackled again.",
+      "scene": "mall-night",
+      "sfx": "static",
+      "pause": 0.4
+    },
+    {
+      "line": "\"Customer... *we can see you.*\"",
+      "scene": "void:#1a0a14",
+      "sfx": "sting",
+      "pause": 0.5
+    },
+    {
+      "line": "But security goes home at ten.",
+      "scene": "mall-night",
+      "pause": 0.3
+    },
+    {
+      "line": "So who's *watching the cameras?*",
+      "scene": "mall-night",
+      "zoom": {
+        "x": 540,
+        "y": 700,
+        "z": 1.5
+      },
+      "hidden": {
+        "type": "figure",
+        "x": 395,
+        "y": 920,
+        "s": 0.45,
+        "from": 0.4,
+        "to": 0.75
+      },
+      "pause": 0.4
+    },
+    {
+      "line": "I fell asleep in a fitting ro—",
+      "scene": "mall-night",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "LOCKED IN",
+      "THE MALL"
+    ]
+  },
+  "upload": {
+    "title": "I Got Locked In A Mall Overnight 😨 #shorts",
+    "description": "I fell asleep in a fitting room... and woke up after closing. Did you see who was watching? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "mall",
+      "liminalspaces"
+    ],
+    "pinned": "Did you see them in the store window? 👀 (watch again)"
+  }
+}

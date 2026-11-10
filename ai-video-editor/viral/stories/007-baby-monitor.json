@@ -1,0 +1,71 @@
+{
+  "title": "The Baby Monitor",
+  "voice": {
+    "kokoro": "af_heart",
+    "kokoroSpeed": 0.95,
+    "gender": "female"
+  },
+  "beats": [
+    {
+      "line": "We just moved in. The old owners left a baby monitor behind.",
+      "scene": "kids-room-night"
+    },
+    {
+      "line": "Last night, it turned on by itself.",
+      "scene": "bedroom-night",
+      "sfx": "static"
+    },
+    {
+      "line": "Someone was *humming* a lullaby.",
+      "scene": "kids-room-night",
+      "zoom": {
+        "x": 520,
+        "y": 1250,
+        "z": 1.4
+      }
+    },
+    {
+      "line": "Then a voice whispered, \"Shh. She's finally sleeping.\"",
+      "scene": "kids-room-night",
+      "pause": 0.5
+    },
+    {
+      "line": "We *don't have a baby.*",
+      "scene": "void:#1a0a18",
+      "sfx": "sting",
+      "pause": 0.6
+    },
+    {
+      "line": "And the room it's in has been *empty* since we moved in.",
+      "scene": "kids-room-night",
+      "zoom": "underbed",
+      "eyes": true,
+      "pause": 0.6
+    },
+    {
+      "line": "We just moved in. The old owners le—",
+      "scene": "kids-room-night",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "WE DON'T",
+      "HAVE A BABY"
+    ]
+  },
+  "upload": {
+    "title": "Our Baby Monitor Started Humming At Night 😨 #shorts",
+    "description": "The old owners left a baby monitor. Last night someone was humming into it. We don't have a baby. Did you see under the bed? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "babymonitor",
+      "newhouse"
+    ],
+    "pinned": "Did you see what was under the crib bed? 👀"
+  }
+}

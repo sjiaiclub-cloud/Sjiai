@@ -1,0 +1,86 @@
+{
+  "title": "Get In The Car",
+  "voice": {
+    "kokoro": "bm_george",
+    "kokoroSpeed": 0.95,
+    "gender": "male"
+  },
+  "beats": [
+    {
+      "line": "I was walking home late when a car pulled up beside me.",
+      "scene": "street-night",
+      "hidden": {
+        "type": "figure",
+        "x": 180,
+        "y": 1380,
+        "s": 0.55,
+        "from": 0.3,
+        "to": 0.95,
+        "alpha": 0.7
+      }
+    },
+    {
+      "line": "The driver rolled down the window. \"*Get in.* Quickly.\"",
+      "scene": "street-night"
+    },
+    {
+      "line": "Obviously, I ran. All the way home. I locked the door.",
+      "scene": "hallway-night",
+      "sfx": "steps"
+    },
+    {
+      "line": "A minute later, there was a knock. It was the driver.",
+      "scene": "hallway-night",
+      "sfx": "knock",
+      "pause": 0.3
+    },
+    {
+      "line": "\"You should've got in the car,\" he said.",
+      "scene": "hallway-night",
+      "pause": 0.4
+    },
+    {
+      "line": "\"*He followed you inside.*\"",
+      "scene": "void:#1a0a0a",
+      "sfx": "sting",
+      "pause": 0.6
+    },
+    {
+      "line": "I live alone.",
+      "scene": "hallway-night",
+      "hidden": {
+        "type": "eyes",
+        "x": 160,
+        "y": 760,
+        "from": 0.4,
+        "to": 0.85
+      },
+      "pause": 0.9
+    },
+    {
+      "line": "I was walking home late when a car pull—",
+      "scene": "street-night",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "HE TRIED",
+      "TO WARN ME"
+    ]
+  },
+  "upload": {
+    "title": "A Stranger Told Me To Get In His Car… 😳 #shorts",
+    "description": "I ran from a stranger's car. Then he knocked on my door. Did you see who was behind me at the start? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "walkinghome",
+      "stranger"
+    ],
+    "pinned": "Watch the very first scene again. Who's behind me? 👀"
+  }
+}

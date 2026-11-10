@@ -1,0 +1,84 @@
+{
+  "title": "The Camping Video",
+  "voice": {
+    "kokoro": "af_heart",
+    "kokoroSpeed": 0.95,
+    "gender": "female"
+  },
+  "beats": [
+    {
+      "line": "We went camping deep in the woods. Just the three of us.",
+      "scene": "forest-night"
+    },
+    {
+      "line": "In the morning, my phone had a new video. *I didn't record it.*",
+      "scene": "forest-night",
+      "prop": {
+        "type": "phone",
+        "title": "New video",
+        "lines": [
+          "3:14 AM"
+        ]
+      }
+    },
+    {
+      "line": "It was us. Asleep in our tent.",
+      "scene": "forest-night",
+      "zoom": {
+        "x": 540,
+        "y": 1200,
+        "z": 1.5
+      }
+    },
+    {
+      "line": "Filmed from *outside.*",
+      "scene": "void:#08140c",
+      "sfx": "sting",
+      "pause": 0.6
+    },
+    {
+      "line": "Then a hand reached in front of the camera...",
+      "scene": "forest-night",
+      "pause": 0.3
+    },
+    {
+      "line": "and *waved.*",
+      "scene": "forest-night",
+      "hidden": {
+        "type": "figure",
+        "x": 820,
+        "y": 1450,
+        "s": 0.8,
+        "from": 0.2,
+        "to": 0.9,
+        "alpha": 0.8
+      },
+      "pause": 0.9
+    },
+    {
+      "line": "We went camping deep in the wo—",
+      "scene": "forest-night",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "WHO FILMED",
+      "THIS?"
+    ]
+  },
+  "upload": {
+    "title": "Someone Filmed Us While We Slept 😨 #shorts",
+    "description": "We found a video on my phone that none of us recorded. Did you spot them in the trees? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "camping",
+      "woods"
+    ],
+    "pinned": "Did you see who was in the trees? 👀"
+  }
+}

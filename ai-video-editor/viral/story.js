@@ -48,6 +48,25 @@ function drawEyes(ctx, x, y, t, a) {
   ctx.restore();
 }
 
+function drawFigure(ctx, x, y, sc, a) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha = a; ctx.translate(x, y); ctx.scale(sc, sc); ctx.fillStyle = '#020204';
+  ctx.beginPath(); ctx.ellipse(0, -330, 42, 52, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-70, -270); ctx.quadraticCurveTo(-95, -100, -60, 0); ctx.lineTo(60, 0); ctx.quadraticCurveTo(95, -100, 70, -270); ctx.closePath(); ctx.fill();
+  ctx.fillRect(-55, -10, 40, 10); ctx.fillRect(15, -10, 40, 10);
+  ctx.fillStyle = 'rgba(255,240,210,0.85)'; ctx.beginPath(); ctx.arc(-15, -335, 4, 0, Math.PI * 2); ctx.arc(15, -335, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function note(ctx, p, lt) {
+  const s = ease.back(prog(lt, 0, 0.4));
+  ctx.save(); ctx.translate(540, 760); ctx.rotate(-0.05); ctx.scale(s, s);
+  ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.fillRect(-300, -250, 620, 520); ctx.fillStyle = '#efe8d4'; ctx.fillRect(-310, -260, 620, 520);
+  ctx.strokeStyle = 'rgba(80,110,180,0.25)'; ctx.lineWidth = 2; for (let y = -180; y < 240; y += 60) { ctx.beginPath(); ctx.moveTo(-290, y); ctx.lineTo(290, y); ctx.stroke(); }
+  ctx.transform(1, 0, -0.18, 1, 0, 0); font(ctx, 58, 700, SANS); ctx.fillStyle = '#7a1010';
+  const shown = Math.floor(clamp((lt - 0.3) / 0.9) * p.lines.join('').length); let used = 0;
+  p.lines.forEach((l, i) => { const n = Math.max(0, Math.min(l.length, shown - used)); used += l.length; ctx.fillText(l.slice(0, n), -260, -110 + i * 120); });
+  ctx.restore();
+}
 function phone(ctx, p, lt) {
   const s = ease.out(prog(lt, 0, 0.4));
   ctx.save(); ctx.translate(540, 760 + (1 - s) * 500); ctx.scale(1.55, 1.55);
@@ -76,10 +95,13 @@ function drawFrame(ctx, t) {
   // camera
   let z = 1 + 0.07 * p, fx = 540, fy = 960;
   if (b.zoom === 'underbed') { z = 1.9 + 0.25 * p; fx = 480; fy = 1420; }
+  else if (b.zoom && typeof b.zoom === 'object') { z = b.zoom.z + 0.15 * p; fx = b.zoom.x; fy = b.zoom.y; }
   const shake = b.sfx === 'sting' ? Math.max(0, 1 - lt * 2.5) : 0;
   ctx.save(); ctx.translate(540 + Math.sin(t * 80) * 14 * shake, 960 + Math.cos(t * 70) * 10 * shake); ctx.scale(z, z); ctx.translate(-fx, -fy);
   b.set.draw(ctx, t);
   if (b.eyes) drawEyes(ctx, 480, 1425, t, clamp((lt - b.dur * 0.45) / 0.15) * (1 - clamp((lt - b.dur * 0.45 - 0.55) / 0.15)));
+  if (b.hidden) { const h = b.hidden, a0 = b.dur * (h.from ?? 0.45), a1 = b.dur * (h.to ?? 0.75), a = clamp((lt - a0) / 0.12) * (1 - clamp((lt - a1) / 0.12));
+    if (h.type === 'figure') drawFigure(ctx, h.x, h.y, h.s || 1, a * (h.alpha ?? 0.9)); else drawEyes(ctx, h.x, h.y, t, a); }
   ctx.restore();
   if (b.set.tint) { ctx.fillStyle = b.set.tint; ctx.fillRect(0, 0, W, H); }
   // heavy vignette + grain
@@ -88,6 +110,7 @@ function drawFrame(ctx, t) {
   for (let i = 0; i < 1100; i++) { const r1 = Math.sin((i + f * 977) * 12.9898) * 43758.5453, r2 = Math.sin((i + f * 977) * 78.233) * 43758.5453; gctx.fillStyle = i % 2 ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.12)'; gctx.fillRect((r1 - Math.floor(r1)) * W, (r2 - Math.floor(r2)) * H, 2, 2); }
   ctx.drawImage(grain, 0, 0);
   if (b.prop?.type === 'phone') phone(ctx, b.prop, lt);
+  if (b.prop?.type === 'note') note(ctx, b.prop, lt);
   if (!noWords) words(ctx, b, t);
   // cut-in flash between beats
   const fl = Math.max(0, 1 - lt * 8); if (b !== beats[0] && fl > 0) { ctx.fillStyle = `rgba(0,0,0,${fl * 0.6})`; ctx.fillRect(0, 0, W, H); }
@@ -115,11 +138,11 @@ const si = process.argv.indexOf('--stills');
 if (si > -1 && (process.argv[si + 1] || 'auto') === 'auto') process.argv[si + 1] = beats.map((b) => (b.start + Math.min(b.dur * 0.6, b.dur - 0.05)).toFixed(2)).join(',');
 await render({ name: NAME, total: TOTAL, drawFrame, audio, outDir: OUT });
 if (si < 0) {
-  const c = createCanvas(W, H), ctx = c.getContext('2d'), eb = beats.find((b) => b.eyes) || beats[0];
-  const ct = eb.start + eb.dur * 0.6; noWords = true; drawFrame(ctx, ct);
+  const c = createCanvas(W, H), ctx = c.getContext('2d'), eb = beats.find((b) => b.eyes || b.hidden) || beats[0];
+  const ct = eb.start + eb.dur * (eb.hidden ? ((eb.hidden.from ?? 0.45) + (eb.hidden.to ?? 0.75)) / 2 : 0.6); noWords = true; drawFrame(ctx, ct);
   ctx.fillStyle = 'rgba(0,0,0,0.3)'; ctx.fillRect(0, 0, W, H);
   ctx.textAlign = 'center'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#000'; ctx.lineWidth = 18;
-  ['NEVER CHECK', 'UNDER THE BED'].forEach((l, i) => { font(ctx, 140, 900, DISPLAY); const fw = ctx.measureText(l).width; if (fw > 940) font(ctx, Math.floor(140 * 940 / fw), 900, DISPLAY); const y = 520 + i * 160; ctx.strokeText(l, 540, y); ctx.fillStyle = i ? '#ff3b3b' : '#fff'; ctx.fillText(l, 540, y); });
+  (story.cover?.lines || ['NEVER CHECK', 'UNDER THE BED']).forEach((l, i) => { font(ctx, 140, 900, DISPLAY); const fw = ctx.measureText(l).width; if (fw > 940) font(ctx, Math.floor(140 * 940 / fw), 900, DISPLAY); const y = 520 + i * 160; ctx.strokeText(l, 540, y); ctx.fillStyle = i ? '#ff3b3b' : '#fff'; ctx.fillText(l, 540, y); });
   writeFileSync(path.join(OUT, `${NAME}-cover.png`), c.toBuffer('image/png'));
   const u = story.upload; writeFileSync(path.join(OUT, `${NAME}-upload.txt`), `TITLE:\n${u.title}\n\nDESCRIPTION:\n${u.description}\n\n${u.hashtags.map((h) => '#' + h).join(' ')}\n\nPINNED COMMENT:\n${u.pinned}\n`);
 }

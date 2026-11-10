@@ -1,0 +1,100 @@
+{
+  "title": "The Selfie",
+  "voice": {
+    "kokoro": "am_fenrir",
+    "kokoroSpeed": 0.95,
+    "gender": "male"
+  },
+  "beats": [
+    {
+      "line": "I posted a selfie from the park. Sunny day, nobody around.",
+      "scene": "park-day"
+    },
+    {
+      "line": "A comment popped up. \"Who's the man *behind you?*\"",
+      "scene": "park-day",
+      "prop": {
+        "type": "phone",
+        "title": "Comments",
+        "lines": [
+          "who's the man",
+          "behind you?"
+        ]
+      },
+      "sfx": "buzz"
+    },
+    {
+      "line": "I zoomed in. Nobody. Just trees.",
+      "scene": "park-day",
+      "zoom": {
+        "x": 300,
+        "y": 900,
+        "z": 1.8
+      }
+    },
+    {
+      "line": "Another comment. Same account.",
+      "scene": "park-day",
+      "sfx": "buzz",
+      "pause": 0.3
+    },
+    {
+      "line": "\"*Not in the photo.*\"",
+      "scene": "park-day",
+      "prop": {
+        "type": "phone",
+        "title": "Comments",
+        "lines": [
+          "not in",
+          "the photo"
+        ]
+      },
+      "pause": 0.4
+    },
+    {
+      "line": "\"*Behind you. Now.*\"",
+      "scene": "void:#1a0a0a",
+      "sfx": "sting",
+      "pause": 0.5
+    },
+    {
+      "line": "Don't turn around.",
+      "scene": "park-day",
+      "hidden": {
+        "type": "figure",
+        "x": 560,
+        "y": 1500,
+        "s": 1.6,
+        "from": 0.35,
+        "to": 0.75,
+        "alpha": 0.85
+      },
+      "pause": 0.9
+    },
+    {
+      "line": "I posted a selfie from the park. Sun—",
+      "scene": "park-day",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "WHO'S",
+      "BEHIND YOU?"
+    ]
+  },
+  "upload": {
+    "title": "A Stranger Commented On My Selfie… 😨 #shorts",
+    "description": "Someone asked who was behind me in my selfie. There was nobody. Then they commented again. Did you see him? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "selfie",
+      "creepycomments"
+    ],
+    "pinned": "Did you see him at the end? 👀 Don't turn around."
+  }
+}

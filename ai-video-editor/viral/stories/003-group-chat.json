@@ -1,0 +1,105 @@
+{
+  "title": "The Group Chat",
+  "voice": {
+    "kokoro": "af_heart",
+    "kokoroSpeed": 0.95,
+    "gender": "female"
+  },
+  "beats": [
+    {
+      "line": "My best friend Sam dropped his phone in the lake last summer.",
+      "scene": "bedroom-night"
+    },
+    {
+      "line": "It's still down there. *Nobody* ever found it.",
+      "scene": "void:#08182a"
+    },
+    {
+      "line": "Last night, our group chat buzzed at 3 AM.",
+      "scene": "bedroom-night",
+      "sfx": "buzz",
+      "prop": {
+        "type": "phone",
+        "title": "The Squad",
+        "lines": [
+          "3:07 AM"
+        ]
+      }
+    },
+    {
+      "line": "Sam is typing...",
+      "scene": "bedroom-night",
+      "prop": {
+        "type": "phone",
+        "title": "The Squad",
+        "lines": [
+          "Sam is typing..."
+        ]
+      },
+      "pause": 0.6
+    },
+    {
+      "line": "Then one message.",
+      "scene": "bedroom-night",
+      "pause": 0.3
+    },
+    {
+      "line": "\"*It's so cold down here.*\"",
+      "scene": "bedroom-night",
+      "sfx": "sting",
+      "prop": {
+        "type": "phone",
+        "title": "Sam",
+        "lines": [
+          "it's so cold",
+          "down here"
+        ]
+      },
+      "pause": 0.5
+    },
+    {
+      "line": "And then he sent a *photo.* Of my window.",
+      "scene": "bedroom-night",
+      "zoom": {
+        "x": 785,
+        "y": 570,
+        "z": 1.9
+      },
+      "hidden": {
+        "type": "figure",
+        "x": 700,
+        "y": 820,
+        "s": 0.55,
+        "from": 0.45,
+        "to": 0.8,
+        "alpha": 0.75
+      },
+      "pause": 0.5
+    },
+    {
+      "line": "My best friend Sam dropped his pho—",
+      "scene": "bedroom-night",
+      "cut": true
+    }
+  ],
+  "cover": {
+    "lines": [
+      "HE TEXTED",
+      "FROM THE LAKE"
+    ]
+  },
+  "upload": {
+    "title": "My Friend's Lost Phone Texted Me At 3AM 😰 #shorts",
+    "description": "Sam's phone has been at the bottom of the lake for a year. Last night it texted our group chat. Did you see the window? 👀",
+    "hashtags": [
+      "shorts",
+      "scarystories",
+      "horrorstory",
+      "creepy",
+      "storytime",
+      "groupchat",
+      "3am"
+    ],
+    "pinned": "Look at the window again 👀"
+  }
+}
