@@ -112,6 +112,15 @@ function drawFrame(ctx, t) {
   if (b.prop?.type === 'phone') phone(ctx, b.prop, lt);
   if (b.prop?.type === 'note') note(ctx, b.prop, lt);
   if (!noWords) words(ctx, b, t);
+  if (story.hook && t < (story.hook.until ?? 2.6) && !noWords) {
+    const a = 1 - clamp((t - (story.hook.until ?? 2.6) + 0.3) / 0.3);
+    ctx.save(); ctx.globalAlpha = a; ctx.textAlign = 'center'; ctx.lineJoin = 'round';
+    story.hook.lines.forEach((l, i) => { font(ctx, 96, 900, DISPLAY); const fw = ctx.measureText(l).width; if (fw > 960) font(ctx, Math.floor(96 * 960 / fw), 900, DISPLAY); const y = 430 + i * 108;
+      ctx.strokeStyle = '#000'; ctx.lineWidth = 16; ctx.strokeText(l, 540, y); ctx.fillStyle = i === (story.hook.highlight ?? 1) ? '#ff3b3b' : '#fff'; ctx.fillText(l, 540, y); });
+    ctx.restore(); ctx.textAlign = 'left';
+  }
+  if (story.part) { font(ctx, 40, 900, MONO); const lbl = `PART ${story.part}`, w = ctx.measureText(lbl).width + 40; ctx.fillStyle = '#ff3b3b'; ctx.beginPath(); ctx.roundRect(540 - w / 2, 220, w, 64, 14); ctx.fill(); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(lbl, 540, 265); ctx.textAlign = 'left'; }
+  if (b.ask && !noWords) { const q = ease.back(prog(lt, 0.2, 0.35)); if (q > 0) { ctx.save(); ctx.translate(540, 1520); ctx.scale(q, q); font(ctx, 48, 900, DISPLAY); const w = ctx.measureText(b.ask).width + 80; ctx.fillStyle = '#ffd23f'; ctx.beginPath(); ctx.roundRect(-w / 2, -50, w, 96, 48); ctx.fill(); ctx.fillStyle = '#000'; ctx.textAlign = 'center'; ctx.fillText(b.ask, 0, 16); ctx.restore(); ctx.textAlign = 'left'; } }
   // cut-in flash between beats
   const fl = Math.max(0, 1 - lt * 8); if (b !== beats[0] && fl > 0) { ctx.fillStyle = `rgba(0,0,0,${fl * 0.6})`; ctx.fillRect(0, 0, W, H); }
 }

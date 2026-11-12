@@ -1,0 +1,22 @@
+{
+  "title": "The 3 AM Text: Part 2",
+  "part": 2,
+  "voice": { "kokoro": "am_fenrir", "kokoroSpeed": 1.0, "gender": "male" },
+  "hook": { "lines": ["MY 6-YEAR-OLD SISTER", "TEXTED ME AGAIN", "SHE DOESN'T HAVE A PHONE"], "highlight": 1, "until": 2.0 },
+  "beats": [
+    { "line": "She texted me again last night.", "scene": "kids-room-night", "zoom": "underbed", "hidden": { "type": "eyes", "x": 480, "y": 1425, "from": 0, "to": 0.95 }, "sfx": "buzz" },
+    { "line": "\"*Stop checking* under my bed.\"", "scene": "bedroom-night", "prop": { "type": "phone", "title": "Lily", "lines": ["stop checking", "under my bed"] } },
+    { "line": "So I didn't. I stayed in my room.", "scene": "bedroom-night", "ask": "WOULD YOU CHECK?" },
+    { "line": "Then my closet door *creaked open.*", "scene": "hallway-night", "sfx": "door", "zoom": { "x": 540, "y": 960, "z": 1.6 } },
+    { "line": "\"*Your turn.*\"", "scene": "void:#2a0a10", "sfx": "sting", "prop": { "type": "phone", "title": "Lily", "lines": ["your turn"] }, "pause": 0.7 },
+    { "line": "She texted me again last ni—", "scene": "kids-room-night", "zoom": "underbed", "cut": true }
+  ],
+  "cover": { "lines": ["SHE TEXTED", "AGAIN"] },
+  "upload": {
+    "title": "My Sister Texted Me Again… She's 6 😨 Part 2 #shorts",
+    "description": "She doesn't have a phone. She texted me again. Would you check?",
+    "caption": "She texted me again. She's 6 and doesn't have a phone. 😨 #scarystories #shorts",
+    "hashtags": ["shorts", "scarystories", "horrorstory", "creepy", "storytime", "3am"],
+    "pinned": "Would you check under the bed? 👇 Part 3?"
+  }
+}
