@@ -2,23 +2,22 @@
   "title": "The Camping Video",
   "voice": {
     "kokoro": "af_heart",
-    "kokoroSpeed": 0.95,
+    "kokoroSpeed": 1.0,
     "gender": "female"
   },
   "beats": [
     {
-      "line": "We went camping deep in the woods. Just the three of us.",
-      "scene": "forest-night"
-    },
-    {
-      "line": "In the morning, my phone had a new video. *I didn't record it.*",
+      "line": "My phone had a video *I didn't record.*",
       "scene": "forest-night",
-      "prop": {
-        "type": "phone",
-        "title": "New video",
-        "lines": [
-          "3:14 AM"
-        ]
+      "sfx": "buzz",
+      "hidden": {
+        "type": "figure",
+        "x": 820,
+        "y": 1450,
+        "s": 0.8,
+        "from": 0,
+        "to": 0.95,
+        "alpha": 0.55
       }
     },
     {
@@ -28,18 +27,18 @@
         "x": 540,
         "y": 1200,
         "z": 1.5
-      }
+      },
+      "ask": "WOULD YOU KEEP CAMPING?"
     },
     {
       "line": "Filmed from *outside.*",
       "scene": "void:#08140c",
       "sfx": "sting",
-      "pause": 0.6
+      "pause": 0.5
     },
     {
       "line": "Then a hand reached in front of the camera...",
-      "scene": "forest-night",
-      "pause": 0.3
+      "scene": "forest-night"
     },
     {
       "line": "and *waved.*",
@@ -49,14 +48,14 @@
         "x": 820,
         "y": 1450,
         "s": 0.8,
-        "from": 0.2,
+        "from": 0.15,
         "to": 0.9,
-        "alpha": 0.8
+        "alpha": 0.85
       },
-      "pause": 0.9
+      "pause": 0.8
     },
     {
-      "line": "We went camping deep in the wo—",
+      "line": "My phone had a video I didn't rec—",
       "scene": "forest-night",
       "cut": true
     }
@@ -81,5 +80,14 @@
     ],
     "pinned": "Did you see who was in the trees? 👀",
     "caption": "Who filmed us while we slept? 😨 #scarystories #camping #shorts"
+  },
+  "hook": {
+    "lines": [
+      "WE FOUND A VIDEO",
+      "WE DIDN'T RECORD",
+      "WHILE WE WERE ASLEEP"
+    ],
+    "highlight": 1,
+    "until": 2.4
   }
 }

@@ -2,48 +2,40 @@
   "title": "Get In The Car",
   "voice": {
     "kokoro": "bm_george",
-    "kokoroSpeed": 0.95,
+    "kokoroSpeed": 1.0,
     "gender": "male"
   },
   "beats": [
     {
-      "line": "I was walking home late when a car pulled up beside me.",
+      "line": "A stranger pulled up and said, \"*Get in.* Quickly.\"",
       "scene": "street-night",
       "hidden": {
         "type": "figure",
         "x": 180,
         "y": 1380,
         "s": 0.55,
-        "from": 0.3,
+        "from": 0,
         "to": 0.95,
         "alpha": 0.7
       }
     },
     {
-      "line": "The driver rolled down the window. \"*Get in.* Quickly.\"",
-      "scene": "street-night"
-    },
-    {
-      "line": "Obviously, I ran. All the way home. I locked the door.",
+      "line": "I ran home and locked the door.",
       "scene": "hallway-night",
-      "sfx": "steps"
+      "sfx": "steps",
+      "ask": "WOULD YOU GET IN?"
     },
     {
-      "line": "A minute later, there was a knock. It was the driver.",
+      "line": "Then he knocked. \"You should've got in.\"",
       "scene": "hallway-night",
       "sfx": "knock",
       "pause": 0.3
     },
     {
-      "line": "\"You should've got in the car,\" he said.",
-      "scene": "hallway-night",
-      "pause": 0.4
-    },
-    {
       "line": "\"*He followed you inside.*\"",
       "scene": "void:#1a0a0a",
       "sfx": "sting",
-      "pause": 0.6
+      "pause": 0.5
     },
     {
       "line": "I live alone.",
@@ -52,13 +44,13 @@
         "type": "eyes",
         "x": 160,
         "y": 760,
-        "from": 0.4,
+        "from": 0.3,
         "to": 0.85
       },
-      "pause": 0.9
+      "pause": 0.8
     },
     {
-      "line": "I was walking home late when a car pull—",
+      "line": "A stranger pulled up and sa—",
       "scene": "street-night",
       "cut": true
     }
@@ -83,5 +75,14 @@
     ],
     "pinned": "Watch the very first scene again. Who's behind me? 👀",
     "caption": "He told me to get in the car. I should have. 😳 #scarystories #shorts"
+  },
+  "hook": {
+    "lines": [
+      "A STRANGER SAID",
+      "\"GET IN THE CAR\"",
+      "I SHOULD HAVE"
+    ],
+    "highlight": 1,
+    "until": 2.4
   }
 }
